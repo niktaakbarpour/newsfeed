@@ -2,34 +2,9 @@ import React, {useEffect} from 'react';
 import SideBar from "../../components/navbar/Navbar";
 import Header from "../../components/header/Header";
 import {makeStyles} from "@material-ui/core/styles";
-import Button from '@material-ui/core/Button';
-import NewsList from "./newsList/NewsList";
+import CategoriesList from "./CategoriesList";
 
-const useStyles = makeStyles((theme) => ({
-    hr: {
-        color: theme.palette.secondary.main,
-        height: "10px",
-        backgroundColor: theme.palette.secondary.main,
-        width: "100%",
-        display: "inline-flex",
-    },
-    categoryContainer: {
-        width: "70%",
-    },
-    moreButton: {
-        float: "right"
-    },
-    title: {
-        fontFamily: "Staatliches",
-        fontSize: "50px",
-        marginBottom: "-20px",
-        marginTop: "-20px"
-    },
-    titleAndMoreButtonContainer: {
-        display: "flex",
-        justifyContent: "space-between"
-    }
-}));
+const useStyles = makeStyles((theme) => ({}));
 
 function HomePage() {
     const classes = useStyles();
@@ -45,16 +20,7 @@ function HomePage() {
         <div>
             <Header/>
             <SideBar/>
-            <div className={classes.categoryContainer}>
-                <div className={classes.titleAndMoreButtonContainer}>
-                <p className={classes.title}>CoronaVirus</p>
-                <Button className={classes.moreButton} variant="contained" color="secondary">
-                    More +
-                </Button>
-                </div>
-                <hr className={classes.hr}/>
-                <NewsList news={news} />
-            </div>
+            <CategoriesList news={news}/>
         </div>
     );
 }
