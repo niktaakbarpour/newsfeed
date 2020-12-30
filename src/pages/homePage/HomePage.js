@@ -7,9 +7,9 @@ import NewsList from "./newsList/NewsList";
 
 const useStyles = makeStyles((theme) => ({
     hr: {
-        color: "red",
+        color: theme.palette.secondary.main,
         height: "10px",
-        backgroundColor: "red",
+        backgroundColor: theme.palette.secondary.main,
         width: "100%",
         display: "inline-flex",
     },
