@@ -1,6 +1,6 @@
 import React from 'react';
-import News from "../news/News";
 import {makeStyles} from "@material-ui/core/styles";
+import VerticalCard from "./VerticalCard";
 
 const useStyles = makeStyles((theme) => ({
         cardList: {
@@ -10,18 +10,17 @@ const useStyles = makeStyles((theme) => ({
         }
     })
 );
-const NewsList = props => {
+export default function HorizontalCardList({items}) {
     const classes = useStyles();
-
+    console.log(items)
     return (
         <div className={classes.cardList}>
             {
-                props.news.map(n =>
-                    <News key={n.id} n={n}/>
+                items.map(item =>
+                    <VerticalCard key={item.id} item={item}/>
                 )
             }
         </div>
     )
 }
 
-export default NewsList;

@@ -1,28 +1,25 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import SideBar from "../../components/navbar/Navbar";
 import Header from "../../components/header/Header";
-import {makeStyles} from "@material-ui/core/styles";
 import CategoriesList from "./CategoriesList";
 
-const useStyles = makeStyles((theme) => ({}));
+const categories = [{
+    id: 1,
+    title: 'Sports'
+}, {
+    id: 2,
+    title: 'Politics'
+}, {
+    id: 3,
+    title: "Economy"
+}]
 
-function HomePage() {
-    const classes = useStyles();
-    const [news, setNews] = React.useState([]);
-
-    useEffect(() => {
-        fetch("https://jsonplaceholder.typicode.com/users")
-            .then(response => response.json())
-            .then(users => setNews(users));
-    }, [])
-
+export default function HomePage() {
     return (
         <div>
             <Header/>
             <SideBar/>
-            <CategoriesList news={news}/>
+            <CategoriesList categories={categories}/>
         </div>
     );
 }
-
-export default HomePage;

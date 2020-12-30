@@ -21,19 +21,19 @@ const useStyles = makeStyles((theme) => ({
     })
 );
 
-export default function ImgMediaCard(props) {
+export default function VerticalCard({item}) {
     const classes = useStyles();
 
     return (
         <Card className={classes.cardContainer}>
-            <img alt="monster" src={`https://robohash.org/${props.n.id}?set=set2&size=180x180`}/>
+            <img alt="monster" src={`https://robohash.org/${item.id}?set=set2&size=180x180`}/>
             <CardActionArea>
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
-                        {props.n.name}
+                        {item.name}
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
-                        {props.n.email}
+                        {item.email}
                     </Typography>
                 </CardContent>
             </CardActionArea>

@@ -1,17 +1,12 @@
 import React from 'react';
-import Categories from "./Categories";
+import Category from "./Category";
 
-const CategoriesList = props => {
-
+export default function CategoriesList({categories}) {
     return (
-        <div >
+        <div>
             {
-                props.news.map(n =>
-                    <Categories key={n.id} n={n}/>
-                )
+                categories.map(category => <Category key={category.id} category={category}/>)
             }
         </div>
     )
 }
-
-export default CategoriesList;
