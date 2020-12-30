@@ -1,13 +1,23 @@
 import React from 'react';
 import News from "../news/News";
-import './NewsList.css';
+import {makeStyles} from "@material-ui/core/styles";
 
+const useStyles = makeStyles((theme) => ({
+        cardList: {
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr 1fr",
+            gridGap: theme.spacing(2)
+        }
+    })
+);
 const NewsList = props => {
-    return(
-        <div className='card-list'>
+    const classes = useStyles();
+
+    return (
+        <div className={classes.cardList}>
             {
                 props.news.map(n =>
-                    <News key={n.id} n={n} />
+                    <News key={n.id} n={n}/>
                 )
             }
         </div>

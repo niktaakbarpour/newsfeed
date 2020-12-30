@@ -5,6 +5,7 @@ import React from "react";
 import {blue} from "@material-ui/core/colors";
 
 let theme = createMuiTheme({
+    spacing:8,
     palette: {
         primary: {
             main: blue[500]
