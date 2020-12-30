@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles((theme) => ({
         root: {
-            maxWidth: 345,
+            maxWidth: theme.spacing(43),
         },
         cardContainer: {
             display: "flex",
@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
             margin: theme.spacing(2),
             borderRadius: theme.spacing(2),
             cursor: "pointer",
-            maxWidth: 345
+            maxWidth: theme.spacing(43)
         }
     })
 );
