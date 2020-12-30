@@ -2,21 +2,21 @@ import './App.css';
 import HomePage from "./pages/homePage/HomePage";
 import {createMuiTheme, ThemeProvider, responsiveFontSizes} from '@material-ui/core/styles';
 import React from "react";
+import {cyan, grey, indigo, red} from "@material-ui/core/colors";
 
 let theme = createMuiTheme({
-    spacing:8,
+    spacing: 8,
     palette: {
         primary: {
-            light: "#a8dadc",
-            main: "#1a237e"
+            light: cyan[100],
+            main: indigo[900]
         },
         secondary: {
-            light: "#ff5a5f",
-            main: "#c81d25"
+            light: red.A200,
+            main: red[800]
         },
         text: {
-            primary: "rgba(0, 0, 0, 0.87)",
-            secondary: "#fefefe"
+            reverse: grey[50]
         }
     }
 });
