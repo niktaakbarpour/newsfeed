@@ -1,8 +1,9 @@
-import React from 'react';
-import SideBar from "../../components/sidebar/SideBar";
-import LogoAndName from "../../components/logo/LogoAndName";
+import React, {useEffect} from 'react';
+import SideBar from "../../components/navbar/Navbar";
+import Header from "../../components/header/Header";
 import {makeStyles} from "@material-ui/core/styles";
 import Button from '@material-ui/core/Button';
+import NewsList from "./newsList/NewsList";
 
 const useStyles = makeStyles((theme) => ({
     hr: {
@@ -12,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
         width: "100%",
         display: "inline-flex",
     },
-    lineHolder: {
+    categoryContainer: {
         width: "70%",
     },
     moreButton: {
@@ -32,11 +33,19 @@ const useStyles = makeStyles((theme) => ({
 
 function HomePage() {
     const classes = useStyles();
+    const [news, setNews] = React.useState([]);
+
+    useEffect(() => {
+        fetch("https://jsonplaceholder.typicode.com/users")
+            .then(response => response.json())
+            .then(users => setNews(users));
+    }, [])
+
     return (
         <div>
-            <LogoAndName/>
+            <Header/>
             <SideBar/>
-            <div className={classes.lineHolder}>
+            <div className={classes.categoryContainer}>
                 <div className={classes.titleAndMoreButtonContainer}>
                 <p className={classes.title}>CoronaVirus</p>
                 <Button className={classes.moreButton} variant="contained" color="secondary">
@@ -44,6 +53,7 @@ function HomePage() {
                 </Button>
                 </div>
                 <hr className={classes.hr}/>
+                <NewsList news={news} />
             </div>
         </div>
     );

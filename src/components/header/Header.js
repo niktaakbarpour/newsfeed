@@ -6,21 +6,21 @@ const useStyles = makeStyles((theme) => ({
     name: {
         fontFamily: "Staatliches",
         fontSize: "100px",
-        marginTop: "-120px",
+        // marginTop: "-120px",
         margin: "auto",
         alignSelf: "center",
-        marginLeft: "200px"
+        // marginLeft: "200px"
     },
     image: {
         marginTop: "20px",
         marginLeft: "20px"
+    },
+    container: {
+        display: "flex"
     }
-    // container: {
-    //     flexDirection: "row",
-    // }
 }));
 
-function LogoAndName() {
+function Header() {
     const classes = useStyles();
     return (
         <div className={classes.container}>
@@ -30,4 +30,4 @@ function LogoAndName() {
     )
 }
 
-export default LogoAndName;
+export default Header;
