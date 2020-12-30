@@ -23,121 +23,119 @@ import SearchIcon from '@material-ui/icons/Search';
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        display: 'flex',
-
-    },
-    appBar: {
-        transition: theme.transitions.create(['margin', 'width'], {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.leavingScreen,
-        }),
-        justifyContent: "space-between",
-        marginTop: '150px',
-    },
-    appBarShift: {
-        width: `calc(100% - ${drawerWidth}px)`,
-        marginLeft: drawerWidth,
-        transition: theme.transitions.create(['margin', 'width'], {
-            easing: theme.transitions.easing.easeOut,
-            duration: theme.transitions.duration.enteringScreen,
-        }),
-    },
-    title: {
-        flexGrow: 1,
-        display: 'none',
-        [theme.breakpoints.up('sm')]: {
-            display: 'block',
+        root: {
+            display: 'flex',
         },
-        color: theme.palette.text.secondary
-    },
-    iconButtonContainer: {
-
-    },
-    search: {
-        position: 'relative',
-        borderRadius: theme.shape.borderRadius,
-        backgroundColor: fade(theme.palette.common.white, 0.15),
-        '&:hover': {
-            backgroundColor: fade(theme.palette.common.white, 0.25),
+        appBar: {
+            transition: theme.transitions.create(['margin', 'width'], {
+                easing: theme.transitions.easing.sharp,
+                duration: theme.transitions.duration.leavingScreen,
+            }),
+            justifyContent: "space-between",
+            marginTop: '150px',
         },
-        // marginLeft: 0,
-        width: '100%',
-        [theme.breakpoints.up('sm')]: {
-            marginLeft: theme.spacing(1),
-            width: 'auto',
+        appBarShift: {
+            width: `calc(100% - ${drawerWidth}px)`,
+            marginLeft: drawerWidth,
+            transition: theme.transitions.create(['margin', 'width'], {
+                easing: theme.transitions.easing.easeOut,
+                duration: theme.transitions.duration.enteringScreen,
+            }),
         },
-    },
-    searchIcon: {
-        padding: theme.spacing(0, 2),
-        height: '100%',
-        position: 'absolute',
-        pointerEvents: 'none',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    inputRoot: {
-        color: 'inherit',
-    },
-    inputInput: {
-        padding: theme.spacing(1, 1, 1, 0),
-        // vertical padding + font size from searchIcon
-        paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-        transition: theme.transitions.create('width'),
-        width: '100%',
-        [theme.breakpoints.up('sm')]: {
-            width: '12ch',
-            '&:focus': {
-                width: '20ch',
+        title: {
+            flexGrow: 1,
+            display: 'none',
+            [theme.breakpoints.up('sm')]: {
+                display: 'block',
+            },
+            color: theme.palette.text.secondary
+        },
+        iconButtonContainer: {},
+        search: {
+            position: 'relative',
+            borderRadius: theme.shape.borderRadius,
+            backgroundColor: fade(theme.palette.common.white, 0.15),
+            '&:hover': {
+                backgroundColor: fade(theme.palette.common.white, 0.25),
+            },
+            // marginLeft: 0,
+            width: '100%',
+            [theme.breakpoints.up('sm')]: {
+                marginLeft: theme.spacing(1),
+                width: 'auto',
             },
         },
-    },
-    menuButton: {
-        marginRight: theme.spacing(2),
-    },
-    hide: {
-        display: 'none',
-    },
-    drawer: {
-        width: drawerWidth,
-        flexShrink: 0,
-    },
-    drawerPaper: {
-        width: drawerWidth,
-        marginTop: '150px'
-    },
-    drawerHeader: {
-        display: 'flex',
-        alignItems: 'center',
-        padding: theme.spacing(0, 1),
-        // necessary for content to be below app bar
-        ...theme.mixins.toolbar,
-        justifyContent: 'flex-end',
-    },
-    content: {
-        flexGrow: 1,
-        padding: theme.spacing(3),
-        transition: theme.transitions.create('margin', {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.leavingScreen,
-        }),
-        marginLeft: -drawerWidth,
-    },
-    contentShift: {
-        transition: theme.transitions.create('margin', {
-            easing: theme.transitions.easing.easeOut,
-            duration: theme.transitions.duration.enteringScreen,
-        }),
-        marginLeft: 0,
-    },
-    toolbar: {
-        justifyContent: "space-between"
-    }
+        searchIcon: {
+            padding: theme.spacing(0, 2),
+            height: '100%',
+            position: 'absolute',
+            pointerEvents: 'none',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+        },
+        inputRoot: {
+            color: 'inherit',
+        },
+        inputInput: {
+            padding: theme.spacing(1, 1, 1, 0),
+            // vertical padding + font size from searchIcon
+            paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+            transition: theme.transitions.create('width'),
+            width: '100%',
+            [theme.breakpoints.up('sm')]: {
+                width: '12ch',
+                '&:focus': {
+                    width: '20ch',
+                },
+            },
+        },
+        menuButton: {
+            marginRight: theme.spacing(2),
+        },
+        hide: {
+            display: 'none',
+        },
+        drawer: {
+            width: drawerWidth,
+            flexShrink: 0,
+        },
+        drawerPaper: {
+            width: drawerWidth,
+            marginTop: '150px'
+        },
+        drawerHeader: {
+            display: 'flex',
+            alignItems: 'center',
+            padding: theme.spacing(0, 1),
+            // necessary for content to be below app bar
+            ...theme.mixins.toolbar,
+            justifyContent: 'flex-end',
+        },
+        content: {
+            flexGrow: 1,
+            padding: theme.spacing(3),
+            transition: theme.transitions.create('margin', {
+                easing: theme.transitions.easing.sharp,
+                duration: theme.transitions.duration.leavingScreen,
+            }),
+            marginLeft: -drawerWidth,
+        },
+        contentShift: {
+            transition: theme.transitions.create('margin', {
+                easing: theme.transitions.easing.easeOut,
+                duration: theme.transitions.duration.enteringScreen,
+            }),
+            marginLeft: 0,
+        },
+        toolbar: {
+            justifyContent: "space-between"
+        }
+    })
+);
 
-}));
 
-export default function PersistentDrawerLeft() {
+export default function NaveBar({categories}) {
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
@@ -149,6 +147,10 @@ export default function PersistentDrawerLeft() {
     const handleDrawerClose = () => {
         setOpen(false);
     };
+
+    const onNavItemClicked = (itemId) => {
+        console.log(itemId)
+    }
 
     return (
         <div className={classes.root}>
@@ -170,51 +172,20 @@ export default function PersistentDrawerLeft() {
                         >
                             <MenuIcon/>
                         </IconButton>
-                        <IconButton>
+                        <IconButton onClick={onNavItemClicked.bind(null, 0)}>
                             <Typography className={classes.title} variant="h6" noWrap>
                                 Home
                             </Typography>
                         </IconButton>
-                        <IconButton>
-                            <Typography className={classes.title} variant="h6" noWrap>
-                                Coronavirus
-                            </Typography>
-                        </IconButton>
-                        <IconButton>
-                            <Typography className={classes.title} variant="h6" noWrap>
-                                World
-                            </Typography>
-                        </IconButton>
-                        <IconButton>
-                            <Typography className={classes.title} variant="h6" noWrap>
-                                Iran
-                            </Typography>
-                        </IconButton>
-                        <IconButton>
-                            <Typography className={classes.title} variant="h6" noWrap>
-                                Business
-                            </Typography>
-                        </IconButton>
-                        <IconButton>
-                            <Typography className={classes.title} variant="h6" noWrap>
-                                Tech
-                            </Typography>
-                        </IconButton>
-                        <IconButton>
-                            <Typography className={classes.title} variant="h6" noWrap>
-                                Science
-                            </Typography>
-                        </IconButton>
-                        <IconButton>
-                            <Typography className={classes.title} variant="h6" noWrap>
-                                Entertainment & Arts
-                            </Typography>
-                        </IconButton>
-                        <IconButton>
-                            <Typography className={classes.title} variant="h6" noWrap>
-                                Health
-                            </Typography>
-                        </IconButton>
+                        {
+                            categories.map(category =>
+                                (<IconButton key={category.id} onClick={onNavItemClicked.bind(null, category.id)}>
+                                    <Typography className={classes.title} variant="h6" noWrap>
+                                        {category.title}
+                                    </Typography>
+                                </IconButton>)
+                            )
+                        }
                     </div>
                     <div className={classes.search}>
                         <div className={classes.searchIcon}>

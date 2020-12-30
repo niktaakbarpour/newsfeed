@@ -12,7 +12,6 @@ const useStyles = makeStyles((theme) => ({
 );
 export default function HorizontalCardList({items}) {
     const classes = useStyles();
-    console.log(items)
     return (
         <div className={classes.cardList}>
             {

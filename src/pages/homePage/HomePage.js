@@ -1,6 +1,6 @@
 import React from 'react';
-import SideBar from "../../components/navbar/Navbar";
 import Header from "../../components/header/Header";
+import NaveBar from "../../components/navbar/Navbar";
 import CategoriesList from "./CategoriesList";
 
 const categories = [{
@@ -18,7 +18,7 @@ export default function HomePage() {
     return (
         <div>
             <Header/>
-            <SideBar/>
+            <NaveBar categories={categories}/>
             <CategoriesList categories={categories}/>
         </div>
     );
