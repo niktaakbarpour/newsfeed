@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
     },
     categoryContainer: {
         width: "70%",
+        marginBottom: "30px"
     },
     moreButton: {
         float: "right"
@@ -21,7 +22,8 @@ const useStyles = makeStyles((theme) => ({
         fontFamily: "Staatliches",
         fontSize: "50px",
         marginBottom: "-20px",
-        marginTop: "-20px"
+        marginTop: "-20px",
+        marginLeft: "20px"
     },
     titleAndMoreButtonContainer: {
         display: "flex",
