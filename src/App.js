@@ -8,7 +8,16 @@ let theme = createMuiTheme({
     spacing:8,
     palette: {
         primary: {
-            main: blue[500]
+            light: "#a8dadc",
+            main: "#1d3557"
+        },
+        secondary: {
+            light: "#ff5a5f",
+            main: "#c81d25"
+        },
+        text: {
+            primary: "rgba(0, 0, 0, 0.87)",
+            secondary: "#fefefe"
         }
     }
 });

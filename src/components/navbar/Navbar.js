@@ -49,6 +49,7 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.up('sm')]: {
             display: 'block',
         },
+        color: theme.palette.text.secondary
     },
     iconButtonContainer: {
 
