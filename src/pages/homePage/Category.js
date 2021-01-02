@@ -40,11 +40,17 @@ export default function Category({category}) {
             .then(response => response.json())
             .then(news => setNews(news.slice(0, 3)));
     }, [])
+
+
+    const handleClickMore = () => {
+
+    }
+
     return (
         <div className={classes.categoryContainer}>
             <div className={classes.titleAndMoreButtonContainer}>
                 <p className={classes.title}>{category.title}</p>
-                <Button className={classes.moreButton} variant="contained" color="secondary">
+                <Button className={classes.moreButton} variant="contained" color="secondary" onClick={handleClickMore}>
                     More +
                 </Button>
             </div>

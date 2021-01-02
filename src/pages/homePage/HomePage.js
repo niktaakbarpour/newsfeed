@@ -2,6 +2,8 @@ import React from 'react';
 import Header from "../../components/header/Header";
 import NaveBar from "../../components/navbar/Navbar";
 import CategoriesList from "./CategoriesList";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import CategoryPage from "../categoryPage/CategoryPage";
 
 const categories = [{
     id: 1,
@@ -18,8 +20,18 @@ export default function HomePage() {
     return (
         <div>
             <Header/>
-            <NaveBar categories={categories}/>
-            <CategoriesList categories={categories}/>
+            <NaveBar categories={categories}>
+                <Router>
+                    <Switch>
+                        <Route exact path="/">
+                            <CategoriesList categories={categories}/>
+                        </Route>
+                        <Route exact path="/category">
+                            <CategoryPage/>
+                        </Route>
+                    </Switch>
+                </Router>
+            </NaveBar>
         </div>
     );
 }
