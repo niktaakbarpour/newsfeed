@@ -52,7 +52,6 @@ export default function HomePage() {
         }]
         dispatch(setCategories(categories))
         //TODO: getCategories from server
-        dispatch(addSource("https://bbc.com/"))
     })
 
     return (
