@@ -1,4 +1,4 @@
-import HomePage from "./pages/HomePage";
+import Page from "./pages/Page";
 import {createMuiTheme, ThemeProvider, responsiveFontSizes} from '@material-ui/core/styles';
 import React from "react";
 import {cyan, grey, indigo, red} from "@material-ui/core/colors";
@@ -29,7 +29,7 @@ export default function App() {
         <Provider store={store}>
             <Router>
                 <ThemeProvider theme={theme}>
-                    <HomePage/>
+                    <Page/>
                 </ThemeProvider>
             </Router>
         </Provider>
