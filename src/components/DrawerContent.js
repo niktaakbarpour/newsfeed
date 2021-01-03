@@ -37,8 +37,10 @@ export default function DrawerContent() {
 
     const addNewSource = () => {
         const input = document.getElementById("sourceName")
-        dispatch(addSource(input.value))
-        input.value = ""
+        if (input.value) {
+            dispatch(addSource(input.value))
+            input.value = ""
+        }
     }
 
     return (

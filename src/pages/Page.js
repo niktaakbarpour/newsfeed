@@ -66,6 +66,7 @@ export default function Page() {
                     paper: classes.drawerPaper,
                 }}>
                 <div className={classes.drawerHeader}>
+                    <h3>News Sources</h3>
                     <IconButton onClick={() => dispatch(closeDrawer())}>
                         {theme.direction === 'ltr' ? <ChevronLeftIcon/> : <ChevronRightIcon/>}
                     </IconButton>
