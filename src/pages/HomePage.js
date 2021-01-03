@@ -15,7 +15,6 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import Divider from "@material-ui/core/Divider";
 import NewsPage from "./NewsPage";
 import {setCategories} from "../actions/categoriesActions";
-import {addSource} from "../actions/newsSourceActions";
 
 const useStyles = makeStyles((theme) => ({
         drawer: {
