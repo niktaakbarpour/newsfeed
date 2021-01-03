@@ -78,10 +78,10 @@ export default function HomePage() {
                 <Route exact path="/">
                     <CategoriesList/>
                 </Route>
-                <Route path="/:category">
+                <Route exact path="/:category">
                     <CategoryPage/>
                 </Route>
-                <Route path="/:category/:newsId">
+                <Route exact path="/:category/:newsId">
                     <NewsPage/>
                 </Route>
             </Switch>

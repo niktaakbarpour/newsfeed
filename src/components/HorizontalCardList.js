@@ -16,13 +16,13 @@ const useStyles = makeStyles((theme) => ({
         }
     })
 );
-export default function HorizontalCardList({items}) {
+export default function HorizontalCardList({items, onClick}) {
     const classes = useStyles();
     return (
         <div className={classes.cardList}>
             {
                 items.map(item =>
-                    <VerticalCard key={item.id} item={item}/>
+                    <VerticalCard key={item.id} item={item} onClick={onClick}/>
                 )
             }
         </div>

@@ -21,11 +21,11 @@ const useStyles = makeStyles((theme) => ({
     })
 );
 
-export default function VerticalCard({item}) {
+export default function VerticalCard({item, onClick}) {
     const classes = useStyles();
 
     return (
-        <Card className={classes.cardContainer}>
+        <Card className={classes.cardContainer} onClick={() => onClick(item)}>
             <img alt="monster" src={`https://robohash.org/${item.id}?set=set2&size=180x180`}/>
             <CardActionArea>
                 <CardContent>

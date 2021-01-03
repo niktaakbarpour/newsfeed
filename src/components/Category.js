@@ -48,6 +48,10 @@ export default function Category({category}) {
         history.push(`/${category.title.toLowerCase()}`)
     }
 
+    const onItemClicked = (item) => {
+        history.push(`/${category.title.toLowerCase()}/${item.id}`)
+    }
+
     return (
         <div className={classes.categoryContainer}>
             <div className={classes.titleAndMoreButtonContainer}>
@@ -57,7 +61,7 @@ export default function Category({category}) {
                 </Button>
             </div>
             <hr className={classes.hr}/>
-            <HorizontalCardList items={news}/>
+            <HorizontalCardList items={news} onClick={onItemClicked}/>
         </div>
     );
 }
