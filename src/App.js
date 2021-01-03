@@ -1,8 +1,10 @@
-import './App.css';
-import HomePage from "./pages/homePage/HomePage";
+import HomePage from "./pages/HomePage";
 import {createMuiTheme, ThemeProvider, responsiveFontSizes} from '@material-ui/core/styles';
 import React from "react";
 import {cyan, grey, indigo, red} from "@material-ui/core/colors";
+import {BrowserRouter as Router} from "react-router-dom";
+import {Provider} from 'react-redux'
+import store from './store'
 
 let theme = createMuiTheme({
     spacing: 8,
@@ -22,12 +24,14 @@ let theme = createMuiTheme({
 });
 theme = responsiveFontSizes(theme);
 
-function App() {
+export default function App() {
     return (
-        <ThemeProvider theme={theme}>
-            <HomePage/>
-        </ThemeProvider>
+        <Provider store={store}>
+            <Router>
+                <ThemeProvider theme={theme}>
+                    <HomePage/>
+                </ThemeProvider>
+            </Router>
+        </Provider>
     );
 }
-
-export default App;

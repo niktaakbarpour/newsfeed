@@ -4,6 +4,8 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import {makeStyles} from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
+import {useDispatch, useSelector} from "react-redux";
+import {addSource} from "../actions/newsSourceActions";
 
 const useStyles = makeStyles((theme) => ({
         form: {
@@ -28,24 +30,34 @@ const useStyles = makeStyles((theme) => ({
         }
     })
 )
-export default function DrawerContent({sources}) {
+export default function DrawerContent() {
     const classes = useStyles()
+    const newsSources = useSelector(state => state.newsSources.list)
+    const dispatch = useDispatch()
+
+    const addNewSource = () => {
+        const input = document.getElementById("sourceName")
+        dispatch(addSource(input.value))
+        input.value = ""
+    }
+
     return (
         <div>
             <form className={classes.form} noValidate autoComplete="off">
                 <TextField
+                    id="sourceName"
                     className={classes.input}
                     name="link"
                     variant="outlined"
                     label="Link"
                     type='search'
                 />
-                <IconButton>
+                <IconButton onClick={addNewSource}>
                     +
                 </IconButton>
             </form>
             <List>
-                {sources.map((text, index) => (
+                {newsSources.map((text, index) => (
                     <ListItem key={index}>
                         <Card className={classes.card}>
                             <CardActionArea>
