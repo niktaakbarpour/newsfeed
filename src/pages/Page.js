@@ -16,10 +16,12 @@ import Divider from "@material-ui/core/Divider";
 import NewsPage from "./NewsPage";
 import {setCategories} from "../actions/categoriesActions";
 import SearchPage from "./SearchPage";
+import MostRead from "../components/MostRead";
+import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles((theme) => ({
         routerRoot: {
-            width: "70%"
+            marginRight: theme.spacing(3)
         },
         drawer: {
             flexShrink: 0,
@@ -32,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
             // necessary for content to be below app bar
             ...theme.mixins.toolbar,
             justifyContent: 'flex-end',
-        }
+        },
     })
 )
 
@@ -79,22 +81,29 @@ export default function Page() {
             </Drawer>
             <Header/>
             <NaveBar/>
-            <div className={classes.routerRoot}>
-                <Switch>
-                    <Route exact path="/">
-                        <HomePage/>
-                    </Route>
-                    <Route exact path="/search/:query">
-                        <SearchPage/>
-                    </Route>
-                    <Route exact path="/:category">
-                        <CategoryPage/>
-                    </Route>
-                    <Route exact path="/:category/:newsId">
-                        <NewsPage/>
-                    </Route>
-                </Switch>
-            </div>
+            <Grid container spacing={5}>
+                <Grid item xs={9}>
+                    <div className={classes.routerRoot}>
+                        <Switch>
+                            <Route exact path="/">
+                                <HomePage/>
+                            </Route>
+                            <Route exact path="/search/:query">
+                                <SearchPage/>
+                            </Route>
+                            <Route exact path="/:category">
+                                <CategoryPage/>
+                            </Route>
+                            <Route exact path="/:category/:newsId">
+                                <NewsPage/>
+                            </Route>
+                        </Switch>
+                    </div>
+                </Grid>
+                <Grid item xs={3}>
+                    <MostRead/>
+                </Grid>
+            </Grid>
         </div>
     );
 }

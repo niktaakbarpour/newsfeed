@@ -42,7 +42,7 @@ export default function Category({category}) {
     useEffect(() => {
         fetch("https://jsonplaceholder.typicode.com/users")
             .then(response => response.json())
-            .then(news => setNews(news.slice(0, 3)));
+            .then(news => setNews(news.slice(0, 4)));
     }, [])
 
     const handleClickMore = () => {
@@ -62,7 +62,7 @@ export default function Category({category}) {
                 </Button>
             </div>
             <hr className={classes.hr}/>
-            <ReactPlaceholder ready={news.length !== 0} customPlaceholder={<HorizontalCardListPlaceHolder count={3}/>}>
+            <ReactPlaceholder ready={news.length !== 0} customPlaceholder={<HorizontalCardListPlaceHolder count={4}/>}>
                 <HorizontalCardList items={news} onClick={onItemClicked}/>
             </ReactPlaceholder>
         </div>

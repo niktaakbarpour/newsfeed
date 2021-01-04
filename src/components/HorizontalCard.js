@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
             display: "flex",
             alignItems: "end",
             justifyContent: "flex-start"
-        }
+        },
     })
 );
 
@@ -43,14 +43,18 @@ export default function HorizontalCard({item, onClick}) {
             <img alt="monster" src={`https://robohash.org/${item.id}?set=set2&size=200x200`}/>
             <CardActionArea className={classes.cardActionArea}>
                 <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
-                        {item.name}
-                    </Typography>
+                    <div className={classes.date}>
+                        <Typography gutterBottom variant="h5" component="h2">
+                            {item.name}
+                        </Typography>
+                        <Typography gutterBottom variant="h5" component="h2">
+                            date
+                        </Typography>
+                    </div>
                     <Typography variant="body2" color="textSecondary" component="p">
                         {item.email}
                     </Typography>
                 </CardContent>
-
             </CardActionArea>
         </Card>
     );
