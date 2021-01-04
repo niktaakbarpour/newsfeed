@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {useParams} from 'react-router-dom'
+import {useHistory, useParams} from 'react-router-dom'
 import {useSelector} from "react-redux";
 import VerticalCardList from "../components/VerticalCardList";
 import {makeStyles} from "@material-ui/core/styles";
@@ -16,10 +16,11 @@ export default function CategoryPage() {
     const {category} = useParams()
     const categories = useSelector(state => state.categories.list)
     const [news, setNews] = useState([])
+    const history = useHistory()
 
-    // const onItemClicked = (item) => {
-    //     history.push(`/${category.title.toLowerCase()}/${item.id}`)
-    // }
+    const onItemClicked = (item) => {
+        history.push(`/${category.toLowerCase()}/${item.id}`)
+    }
 
     useEffect(() => {
         fetch("https://jsonplaceholder.typicode.com/users")
@@ -33,6 +34,6 @@ export default function CategoryPage() {
     return (
         <div>
             <h1 className={classes.categoryTitle}>{selectedCategory.title}</h1>
-            <VerticalCardList items={news}/>
+            <VerticalCardList items={news} onClick={onItemClicked}/>
         </div>)
 }

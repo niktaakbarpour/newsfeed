@@ -17,7 +17,6 @@ const useStyles = makeStyles((theme) => ({
             marginLeft: theme.spacing(4),
             borderRadius: theme.spacing(2),
             cursor: "pointer",
-            maxWidth: "69%",
             // [theme.breakpoints.down('md')]: {
             //     maxWidth: theme.spacing(80)
             // },
