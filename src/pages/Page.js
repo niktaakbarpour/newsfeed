@@ -18,6 +18,7 @@ import {setCategories} from "../actions/categoriesActions";
 import SearchPage from "./SearchPage";
 import MostRead from "../components/MostRead";
 import Grid from "@material-ui/core/Grid";
+import Carousel from "../components/Carousel";
 
 const useStyles = makeStyles((theme) => ({
         routerRoot: {
@@ -81,6 +82,7 @@ export default function Page() {
             </Drawer>
             <Header/>
             <NaveBar/>
+            <Carousel/>
             <Grid container spacing={5}>
                 <Grid item xs={9}>
                     <div className={classes.routerRoot}>
