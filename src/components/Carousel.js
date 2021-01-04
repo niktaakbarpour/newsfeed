@@ -1,4 +1,3 @@
-import bootstrap from 'bootstrap';
 import React from "react";
 import image1 from './black';
 import 'bootstrap/dist/css/bootstrap.min.css';
