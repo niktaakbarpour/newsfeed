@@ -5,7 +5,7 @@ import ListItem from "@material-ui/core/ListItem";
 import {makeStyles} from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import {useDispatch, useSelector} from "react-redux";
-import {addSource} from "../actions/newsSourceActions";
+import {addSource, removeSource} from "../actions/newsSourceActions";
 
 const useStyles = makeStyles((theme) => ({
         form: {
@@ -43,6 +43,10 @@ export default function DrawerContent() {
         }
     }
 
+    const onSourceClicked = (item) => {
+        dispatch(removeSource(item))
+    }
+
     return (
         <div>
             <form className={classes.form} noValidate autoComplete="off">
@@ -62,7 +66,7 @@ export default function DrawerContent() {
                 {newsSources.map((text, index) => (
                     <ListItem key={index}>
                         <Card className={classes.card}>
-                            <CardActionArea>
+                            <CardActionArea onClick={onSourceClicked.bind(null, text)}>
                                 <CardContent>
                                     <Typography gutterBottom variant="h5" component="h2">
                                         {text}

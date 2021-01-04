@@ -11,6 +11,6 @@ export default handleActions({
     }),
     [removeSource]: ((state, action) => {
         state.list = state.list.filter(category => category !== action.payload)
-        return {...state}
+        return {...state, list: [...state.list]}
     }),
 }, initialState)

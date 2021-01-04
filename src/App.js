@@ -19,6 +19,10 @@ let theme = createMuiTheme({
         },
         text: {
             reverse: grey[50]
+        },
+        placeHolder: {
+            main: grey[300],
+            secondary: grey[200]
         }
     }
 });

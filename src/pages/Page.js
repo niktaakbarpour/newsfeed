@@ -18,6 +18,9 @@ import {setCategories} from "../actions/categoriesActions";
 import SearchPage from "./SearchPage";
 
 const useStyles = makeStyles((theme) => ({
+        routerRoot: {
+            width: "70%"
+        },
         drawer: {
             flexShrink: 0,
         },
@@ -76,20 +79,22 @@ export default function Page() {
             </Drawer>
             <Header/>
             <NaveBar/>
-            <Switch>
-                <Route exact path="/">
-                    <HomePage/>
-                </Route>
-                <Route exact path="/search/:query">
-                    <SearchPage/>
-                </Route>
-                <Route exact path="/:category">
-                    <CategoryPage/>
-                </Route>
-                <Route exact path="/:category/:newsId">
-                    <NewsPage/>
-                </Route>
-            </Switch>
+            <div className={classes.routerRoot}>
+                <Switch>
+                    <Route exact path="/">
+                        <HomePage/>
+                    </Route>
+                    <Route exact path="/search/:query">
+                        <SearchPage/>
+                    </Route>
+                    <Route exact path="/:category">
+                        <CategoryPage/>
+                    </Route>
+                    <Route exact path="/:category/:newsId">
+                        <NewsPage/>
+                    </Route>
+                </Switch>
+            </div>
         </div>
     );
 }
