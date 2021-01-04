@@ -11,7 +11,7 @@ export default function HomePage() {
         <div>
             <ReactPlaceholder
                 showLoadingAnimation={true}
-                ready={categories}
+                ready={categories.length !== 0}
                 customPlaceholder={<CategoriesPlaceHolder count={3}/>}
             >
                 {
