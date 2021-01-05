@@ -13,8 +13,8 @@ const useStyles = makeStyles((theme) => ({
             display: "flex",
             flexDirection: "column",
             boxShadow: theme.shadows[8],
-            margin: theme.spacing(2),
-            borderRadius: theme.spacing(2),
+            margin: theme.spacing(1),
+            borderRadius: theme.spacing(1),
             cursor: "pointer",
             maxWidth: theme.spacing(43)
         }

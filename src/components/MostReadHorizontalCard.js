@@ -12,9 +12,10 @@ const useStyles = makeStyles((theme) => ({
             flexDirection: "row",
             boxShadow: theme.shadows[8],
             margin: theme.spacing(1),
-            borderRadius: theme.spacing(2),
+            borderRadius: theme.spacing(1),
             cursor: "pointer",
-            height: theme.spacing(15)
+            height: theme.spacing(15),
+            // width: theme.spacing(40)
         },
         cardActionArea: {
 
@@ -38,9 +39,9 @@ const useStyles = makeStyles((theme) => ({
         categoryName: {
             margin: "auto"
         },
-    dateAndCategory: {
+        dateAndCategory: {
             display: "block"
-    }
+        }
     })
 );
 
@@ -49,7 +50,7 @@ export default function MostReadHorizontalCard({item, onClick}) {
 
     return (
         <Card className={classes.cardContainer} onClick={() => onClick(item)}>
-            <img alt="monster" src={`https://robohash.org/${item.id}?set=set2&size=120x120`}/>
+            <img alt="monster" src={`https://robohash.org/${item.id}?set=set2&size=80x80`}/>
             <CardActionArea className={classes.cardActionArea}>
                 <CardContent className={classes.cardContent}>
                     <div className={classes.dateAndCategory}>
@@ -69,9 +70,6 @@ export default function MostReadHorizontalCard({item, onClick}) {
                             {item.name}
                         </Typography>
                     </div>
-                    <Typography variant="body2" color="textSecondary" component="p">
-                        {item.email}
-                    </Typography>
                 </CardContent>
             </CardActionArea>
         </Card>

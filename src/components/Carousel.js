@@ -6,8 +6,10 @@ import {makeStyles} from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
 
 container: {
-    width: "35%",
-    margin: "auto"
+    width: "100%",
+    margin: "auto",
+    marginBottom: theme.spacing(4),
+    marginTop: theme.spacing(6)
 }
     })
 );

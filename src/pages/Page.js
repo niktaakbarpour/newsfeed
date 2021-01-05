@@ -19,6 +19,8 @@ import SearchPage from "./SearchPage";
 import MostRead from "../components/MostRead";
 import Grid from "@material-ui/core/Grid";
 import Carousel from "../components/Carousel";
+import FollowUs from "../components/FollowUs";
+import Weather from "../components/Weather";
 
 const useStyles = makeStyles((theme) => ({
         routerRoot: {
@@ -35,6 +37,22 @@ const useStyles = makeStyles((theme) => ({
             // necessary for content to be below app bar
             ...theme.mixins.toolbar,
             justifyContent: 'flex-end',
+        },
+        carouselAndPage: {
+            // marginRight: theme.spacing(38),
+            // marginLeft: theme.spacing(38),
+            [theme.breakpoints.down('sm')]: {
+                marginLeft: theme.spacing(0),
+                marginRight: theme.spacing(0),
+            },
+            [theme.breakpoints.up('md')]: {
+                marginLeft: theme.spacing(10),
+                marginRight: theme.spacing(10),
+            },
+            [theme.breakpoints.up('lg')]: {
+                marginLeft: theme.spacing(30),
+                marginRight: theme.spacing(30),
+            },
         },
     })
 )
@@ -82,30 +100,42 @@ export default function Page() {
             </Drawer>
             <Header/>
             <NaveBar/>
-            <Carousel/>
-            <Grid container spacing={5}>
-                <Grid item xs={9}>
-                    <div className={classes.routerRoot}>
-                        <Switch>
-                            <Route exact path="/">
-                                <HomePage/>
-                            </Route>
-                            <Route exact path="/search/:query">
-                                <SearchPage/>
-                            </Route>
-                            <Route exact path="/:category">
-                                <CategoryPage/>
-                            </Route>
-                            <Route exact path="/:category/:newsId">
-                                <NewsPage/>
-                            </Route>
-                        </Switch>
-                    </div>
+            <div className={classes.carouselAndPage}>
+                <Grid container spacing={2}>
+                    <Grid container item xs={9} spacing={2}>
+                        <Grid item xs={4}>
+
+                            <FollowUs/>
+                        </Grid>
+                        <Grid item xs={8}>
+                            <Carousel/>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <div className={classes.routerRoot}>
+                                <Switch>
+                                    <Route exact path="/">
+                                        <HomePage/>
+                                    </Route>
+                                    <Route exact path="/search/:query">
+                                        <SearchPage/>
+                                    </Route>
+                                    <Route exact path="/:category">
+                                        <CategoryPage/>
+                                    </Route>
+                                    <Route exact path="/:category/:newsId">
+                                        <NewsPage/>
+                                    </Route>
+                                </Switch>
+                            </div>
+                        </Grid>
+                    </Grid>
+
+                    <Grid item xs={3}>
+                        <MostRead/>
+                        <Weather/>
+                    </Grid>
                 </Grid>
-                <Grid item xs={3}>
-                    <MostRead/>
-                </Grid>
-            </Grid>
+            </div>
         </div>
     );
 }
