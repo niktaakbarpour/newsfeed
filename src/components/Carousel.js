@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
             width: "100%",
             margin: "auto",
             marginBottom: theme.spacing(2),
-            marginTop: theme.spacing(6)
+            marginTop: theme.spacing(2)
         }
     })
 );
