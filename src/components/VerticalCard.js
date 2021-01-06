@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
             margin: theme.spacing(1),
             borderRadius: theme.spacing(1),
             cursor: "pointer",
-            maxWidth: theme.spacing(43)
+            maxWidth: theme.spacing(43),
         }
     })
 );

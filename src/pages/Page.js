@@ -104,13 +104,6 @@ export default function Page() {
             <div className={classes.carouselAndPage}>
                 <Grid container spacing={2}>
                     <Grid container item xs={9} spacing={2}>
-                        <Grid item xs={4}>
-
-                            <FollowUs/>
-                        </Grid>
-                        <Grid item xs={8}>
-                            <Carousel/>
-                        </Grid>
                         <Grid item xs={12}>
                             <div className={classes.routerRoot}>
                                 <Switch>
