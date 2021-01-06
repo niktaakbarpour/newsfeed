@@ -13,9 +13,9 @@ const useStyles = makeStyles((theme) => ({
             display: "flex",
             flexDirection: "row",
             boxShadow: theme.shadows[8],
-            margin: theme.spacing(2),
+            margin: theme.spacing(1),
             marginLeft: theme.spacing(4),
-            borderRadius: theme.spacing(2),
+            borderRadius: theme.spacing(1),
             cursor: "pointer",
             // [theme.breakpoints.down('md')]: {
             //     maxWidth: theme.spacing(80)

@@ -6,7 +6,7 @@ const useStyles = makeStyles((theme) => ({
         cardList: {
             display: "grid",
             gridTemplateColumns: "1fr",
-            gridGap: theme.spacing(2)
+            gridGap: theme.spacing(1)
         }
     })
 );
