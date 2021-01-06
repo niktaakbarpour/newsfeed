@@ -10,12 +10,9 @@ const useStyles = makeStyles((theme) => ({
             display: "grid",
             gridTemplateColumns: "1fr 1fr 1fr 1fr",
         },
-        title: {
-            marginLeft: theme.spacing(1)
-        },
         facebook: {
-            backgroundColor: "#ffffff",
-            display: "flex"
+            display: "flex",
+            margin: theme.spacing(0)
         }
     })
 );

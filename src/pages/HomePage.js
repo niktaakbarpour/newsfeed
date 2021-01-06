@@ -17,11 +17,25 @@ export default function HomePage() {
                 ready={categories.length !== 0}
                 customPlaceholder={<CategoriesPlaceHolder count={3}/>}
             >
+                {/*<Grid container spacing={2}>*/}
+                {/*    <Grid item xs={1}>*/}
+
+                {/*    </Grid>*/}
+                {/*    <Grid item xs={11}>*/}
+                {/*        <FollowUs/>*/}
+                {/*    </Grid>*/}
+                {/*</Grid>*/}
+
                 <Grid container spacing={2}>
                     <Grid item xs={2}>
-                        <FollowUs/>
                     </Grid>
-                    <Grid item xs={10}>
+                    <Grid container item xs={10}>
+                        <Grid item xs={5}>
+                            <FollowUs/>
+                        </Grid>
+                        <Grid item xs={7}>
+                        </Grid>
+
                         <Carousel/>
                     </Grid>
                 </Grid>
