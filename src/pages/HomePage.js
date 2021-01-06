@@ -5,7 +5,7 @@ import ReactPlaceholder from "react-placeholder";
 import CategoriesPlaceHolder from "../placeholders/CategoriesPlaceHolder";
 import Grid from "@material-ui/core/Grid";
 import FollowUs from "../components/FollowUs";
-import Carousel from "../components/Carousel";
+import Carousell from "../components/Carousel";
 
 
 export default function HomePage() {
@@ -35,8 +35,7 @@ export default function HomePage() {
                         </Grid>
                         <Grid item xs={7}>
                         </Grid>
-
-                        <Carousel/>
+                        <Carousell/>
                     </Grid>
                 </Grid>
                 {
