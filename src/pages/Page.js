@@ -21,6 +21,7 @@ import Grid from "@material-ui/core/Grid";
 import Carousel from "../components/Carousel";
 import FollowUs from "../components/FollowUs";
 import Weather from "../components/Weather";
+import Footer from "../components/Footer";
 
 const useStyles = makeStyles((theme) => ({
         routerRoot: {
@@ -136,6 +137,7 @@ export default function Page() {
                     </Grid>
                 </Grid>
             </div>
+            <Footer/>
         </div>
     );
 }
