@@ -6,8 +6,6 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import SendIcon from '@material-ui/icons/Send';
-import TextField from "@material-ui/core/TextField";
-import Input from "@material-ui/core/Input";
 
 const useStyles = makeStyles((theme) => ({
 
@@ -18,6 +16,11 @@ const useStyles = makeStyles((theme) => ({
             backgroundColor: theme.palette.primary.main,
             color: theme.palette.text.reverse,
             marginTop: theme.spacing(5)
+        },
+
+        footerTitle: {
+            marginBottom: theme.spacing(0),
+            fontSize: "1em"
         },
 
         newsLetter: {
@@ -61,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
         },
 
         socialLinks: {
-            padding: "0",
+            padding: theme.spacing(0),
             margin: "auto",
             listStyle: "none",
             textAlign: "center",
@@ -72,9 +75,9 @@ const useStyles = makeStyles((theme) => ({
         socialLinkLi: {
             display: "inline-block",
             marginTop: theme.spacing(0),
-            marginRight: theme.spacing(.5),
+            marginRight: theme.spacing(2),
             marginBottom: theme.spacing(0),
-            marginLeft: theme.spacing(.5),
+            marginLeft: theme.spacing(2),
         },
 
         socialLink: {
@@ -101,35 +104,37 @@ export default function Footer() {
 
     return (
         <footer className={classes.footer}>
-                <div className={classes.newsLetter}>
-                    <input className={classes.newsLetterInput} type="email" placeholder="Enter Your Email"/>
-                    <a className={classes.newsLetterBtn} href=""><SendIcon/></a>
-                </div>
 
-                <ul className={classes.socialLinks}>
-                    <li className={classes.socialLinkLi}>
-                        <a className={classes.socialLink} href="">
-                            <InstagramIcon/>
-                        </a>
-                    </li>
-                    <li className={classes.socialLinkLi}>
-                        <a className={classes.socialLink} href="">
-                            <TwitterIcon/>
-                        </a>
-                    </li>
-                    <li className={classes.socialLinkLi}>
-                        <a className={classes.socialLink} href="">
-                            <FacebookIcon/>
-                        </a>
-                    </li>
-                    <li className={classes.socialLinkLi}>
-                        <a className={classes.socialLink} href="">
-                            <YouTubeIcon/>
-                        </a>
-                    </li>
-                </ul>
+            <p className={classes.footerTitle}>Get Latest News</p>
+            <div className={classes.newsLetter}>
+                <input className={classes.newsLetterInput} type="email" placeholder="Enter Your Email"/>
+                <a className={classes.newsLetterBtn} href=""><SendIcon/></a>
+            </div>
 
-                <p className={classes.copyRight}>copyright 2021</p>
+            <ul className={classes.socialLinks}>
+                <li className={classes.socialLinkLi}>
+                    <a className={classes.socialLink} href="">
+                        <InstagramIcon/>
+                    </a>
+                </li>
+                <li className={classes.socialLinkLi}>
+                    <a className={classes.socialLink} href="">
+                        <TwitterIcon/>
+                    </a>
+                </li>
+                <li className={classes.socialLinkLi}>
+                    <a className={classes.socialLink} href="">
+                        <FacebookIcon/>
+                    </a>
+                </li>
+                <li className={classes.socialLinkLi}>
+                    <a className={classes.socialLink} href="">
+                        <YouTubeIcon/>
+                    </a>
+                </li>
+            </ul>
+
+            <p className={classes.copyRight}>copyright 2021</p>
 
         </footer>
     );
