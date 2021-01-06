@@ -3,9 +3,9 @@ import {makeStyles} from "@material-ui/core/styles";
 import MostReadVerticalCardList from "./MostReadVerticalCardList";
 
 const useStyles = makeStyles((theme) => ({
-title: {
-    marginLeft: theme.spacing(1)
-}
+        title: {
+            marginLeft: theme.spacing(1)
+        }
     })
 );
 

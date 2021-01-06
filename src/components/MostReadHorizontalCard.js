@@ -37,7 +37,9 @@ const useStyles = makeStyles((theme) => ({
             width: "100%"
         },
         categoryName: {
-            margin: "auto"
+            color:theme.palette.text.reverse,
+            margin: "auto",
+            textAlign: "center"
         },
         dateAndCategory: {
             display: "block"
