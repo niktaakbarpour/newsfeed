@@ -6,12 +6,16 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 
 const useStyles = makeStyles((theme) => ({
-        cardList: {
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr 1fr 1fr",
-        },
-        facebook: {
-            display: "flex",
+        item: {
+            color: theme.palette.primary.main,
+            '&:visited': {
+                color: theme.palette.primary.main
+            },
+            '&:hover': {
+                color: theme.palette.secondary.main
+            },
+            marginRight: theme.spacing(3),
+            display: "inline",
             margin: theme.spacing(0)
         }
     })
@@ -22,20 +26,18 @@ export default function FollowUs() {
 
     return (
         <div>
-            <div className={classes.cardList}>
-                <a className={classes.facebook} href="">
-                    <FacebookIcon fontSize="large"/>
-                </a>
-                <a className={classes.facebook} href="">
-                    <InstagramIcon fontSize="large"/>
-                </a>
-                <a className={classes.facebook} href="">
-                    <TwitterIcon fontSize="large"/>
-                </a>
-                <a className={classes.facebook} href="">
-                    <YouTubeIcon fontSize="large"/>
-                </a>
-            </div>
+            <a className={classes.item} href="/book">
+                <FacebookIcon fontSize="large"/>
+            </a>
+            <a className={classes.item} href="">
+                <InstagramIcon fontSize="large"/>
+            </a>
+            <a className={classes.item} href="">
+                <TwitterIcon fontSize="large"/>
+            </a>
+            <a className={classes.item} href="">
+                <YouTubeIcon fontSize="large"/>
+            </a>
         </div>
     );
 }

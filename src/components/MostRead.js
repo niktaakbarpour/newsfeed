@@ -4,6 +4,7 @@ import MostReadVerticalCardList from "./MostReadVerticalCardList";
 
 const useStyles = makeStyles((theme) => ({
         title: {
+            marginTop: theme.spacing(0),
             marginLeft: theme.spacing(1)
         }
     })

@@ -18,8 +18,6 @@ import {setCategories} from "../actions/categoriesActions";
 import SearchPage from "./SearchPage";
 import MostRead from "../components/MostRead";
 import Grid from "@material-ui/core/Grid";
-import Carousel from "../components/Carousel";
-import FollowUs from "../components/FollowUs";
 import Weather from "../components/Weather";
 import Footer from "../components/Footer";
 
@@ -104,27 +102,25 @@ export default function Page() {
             <div className={classes.carouselAndPage}>
                 <Grid container spacing={2}>
                     <Grid container item xs={9} spacing={2}>
-                        <Grid item xs={12}>
-                            <div className={classes.routerRoot}>
-                                <Switch>
-                                    <Route exact path="/">
-                                        <HomePage/>
-                                    </Route>
-                                    <Route exact path="/search/:query">
-                                        <SearchPage/>
-                                    </Route>
-                                    <Route exact path="/:category">
-                                        <CategoryPage/>
-                                    </Route>
-                                    <Route exact path="/:category/:newsId">
-                                        <NewsPage/>
-                                    </Route>
-                                </Switch>
-                            </div>
-                        </Grid>
+                        <div className={classes.routerRoot}>
+                            <Switch>
+                                <Route exact path="/">
+                                    <HomePage/>
+                                </Route>
+                                <Route exact path="/search/:query">
+                                    <SearchPage/>
+                                </Route>
+                                <Route exact path="/:category">
+                                    <CategoryPage/>
+                                </Route>
+                                <Route exact path="/:category/:newsId">
+                                    <NewsPage/>
+                                </Route>
+                            </Switch>
+                        </div>
                     </Grid>
 
-                    <Grid item xs={3}>
+                    <Grid direction='column' item xs={3}>
                         <MostRead/>
                         <Weather/>
                     </Grid>
