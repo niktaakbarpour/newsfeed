@@ -12,10 +12,10 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MostRead() {
     const classes = useStyles();
-
     const [news, setNews] = useState([])
 
     useEffect(() => {
+        //API
         fetch("https://jsonplaceholder.typicode.com/users")
             .then(response => response.json())
             .then(news => setNews(news));

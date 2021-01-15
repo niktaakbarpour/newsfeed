@@ -88,16 +88,18 @@ export default function NaveBar() {
     }
 
     const onHomeClick = () => {
+        //ROUTING
         if (history.location.pathname !== "/") {
             history.push("/")
         }
     }
 
     const onNavItemClicked = (itemId) => {
+        //ROUTING
         const category = categories.find((category) => {
             return category.id === itemId
         })
-        const url = `/${category.title.toLowerCase()}`
+        const url = `/${category.name.toLowerCase()}`
         if (history.location.pathname !== url) {
             history.push(url)
         }
@@ -130,7 +132,7 @@ export default function NaveBar() {
                                 categories.map(category =>
                                     (<IconButton key={category.id} onClick={onNavItemClicked.bind(null, category.id)}>
                                         <Typography className={classes.title} variant="h6" noWrap>
-                                            {category.title}
+                                            {category.name}
                                         </Typography>
                                     </IconButton>)
                                 )

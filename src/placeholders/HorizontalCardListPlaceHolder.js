@@ -6,7 +6,7 @@ const useStyles = makeStyles((theme) => ({
         cardList: {
             display: "grid",
             gridTemplateColumns: "1fr 1fr 1fr",
-            [theme.breakpoints.down('sm')]: {
+            [theme.breakpoints.down('md')]: {
                 gridTemplateColumns: "1fr 1fr"
             },
             [theme.breakpoints.down('xs')]: {

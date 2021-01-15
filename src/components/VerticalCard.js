@@ -7,9 +7,6 @@ import Typography from '@material-ui/core/Typography';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 
 const useStyles = makeStyles((theme) => ({
-        root: {
-            maxWidth: theme.spacing(43),
-        },
         cardContainer: {
             display: "flex",
             flexDirection: "column",
@@ -32,14 +29,14 @@ export default function VerticalCard({item, onClick}) {
 
     return (
         <Card className={classes.cardContainer} onClick={() => onClick(item)}>
-            <img alt="monster" src={`https://robohash.org/${item.id}?set=set2&size=180x180`}/>
+            <img alt="monster" src={item.pictureUrl}/>
             <CardActionArea>
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
-                        {item.name}
+                        {item.title}
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
-                        {item.email}
+                        {item.description}
                     </Typography>
                     <div className={classes.timeContainer}>
                         <ScheduleIcon color="disabled"/>

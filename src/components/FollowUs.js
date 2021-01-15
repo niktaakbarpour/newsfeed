@@ -26,16 +26,16 @@ export default function FollowUs() {
 
     return (
         <div>
-            <a className={classes.item} href="/book">
+            <a className={classes.item} href="https://facebook.com" target="_blank">
                 <FacebookIcon fontSize="large"/>
             </a>
-            <a className={classes.item} href="">
+            <a className={classes.item} href="https://instagram.com" target="_blank">
                 <InstagramIcon fontSize="large"/>
             </a>
-            <a className={classes.item} href="">
+            <a className={classes.item} href="https://twitter.com" target="_blank">
                 <TwitterIcon fontSize="large"/>
             </a>
-            <a className={classes.item} href="">
+            <a className={classes.item} href="https://youtube.com" target="_blank">
                 <YouTubeIcon fontSize="large"/>
             </a>
         </div>

@@ -1,11 +1,11 @@
 import {combineReducers} from "redux";
 import drawerReducer from "./drawerReducer";
 import categories from "./categoriesReducer";
-import newsSources from "./newsSourceReducer";
+import carousel from "./carouselReducer";
 
 export default combineReducers({
     drawer: drawerReducer,
     categories: categories,
-    newsSources: newsSources
+    carousel: carousel
 })
 

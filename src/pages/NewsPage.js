@@ -6,10 +6,10 @@ export default function NewsPage() {
     const {category, newsId} = useParams()
     const categories = useSelector(state => state.categories.list)
     const selectedCategory = categories.find((item) => {
-        return item.title.toLowerCase() === category
+        return item.name.toLowerCase() === category
     })
     return (
         <div>
-            <h1>{selectedCategory.title}/{newsId}</h1>
+            <h1>{selectedCategory.name}/{newsId}</h1>
         </div>)
 }

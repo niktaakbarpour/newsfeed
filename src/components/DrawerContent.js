@@ -1,11 +1,11 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Card, CardActionArea, CardContent, IconButton, TextField} from "@material-ui/core";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import {makeStyles} from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import {useDispatch, useSelector} from "react-redux";
-import {addSource, removeSource} from "../actions/newsSourceActions";
+import axios from "axios";
+import {BASE_URL} from "../constants/Constants";
 
 const useStyles = makeStyles((theme) => ({
         form: {
@@ -32,19 +32,38 @@ const useStyles = makeStyles((theme) => ({
 )
 export default function DrawerContent() {
     const classes = useStyles()
-    const newsSources = useSelector(state => state.newsSources.list)
-    const dispatch = useDispatch()
+    const [feeds, setFeeds] = useState([])
+
+    useEffect(() => {
+        //API
+        axios.get(`${BASE_URL}/api/feeds`)
+            .then((response) => {
+                setFeeds(response.data)
+            })
+    })
 
     const addNewSource = () => {
-        const input = document.getElementById("sourceName")
-        if (input.value) {
-            dispatch(addSource(input.value))
-            input.value = ""
+        const categoryName = ""
+        const categoryColor = "#FF0000"
+        const feedName = ""
+        const feedUrl = ""
+        const category = {
+            id: 0,
+            name: categoryName,
+            color: categoryColor
         }
+        const newFeed = {
+            id: 0,
+            name: feedName,
+            url: feedUrl,
+            category: category
+        }
+        //API
+        axios.post(`${BASE_URL}/api/feeds`, JSON.stringify(newFeed))
     }
 
     const onSourceClicked = (item) => {
-        dispatch(removeSource(item))
+
     }
 
     return (
@@ -63,13 +82,13 @@ export default function DrawerContent() {
                 </IconButton>
             </form>
             <List>
-                {newsSources.map((text, index) => (
+                {feeds.map((feed, index) => (
                     <ListItem key={index}>
                         <Card className={classes.card}>
-                            <CardActionArea onClick={onSourceClicked.bind(null, text)}>
+                            <CardActionArea onClick={onSourceClicked.bind(null, feed)}>
                                 <CardContent>
                                     <Typography gutterBottom variant="h5" component="h2">
-                                        {text}
+                                        {feed.name}
                                     </Typography>
                                 </CardContent>
                             </CardActionArea>

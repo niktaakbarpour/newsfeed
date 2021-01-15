@@ -5,6 +5,10 @@ import HorizontalCardList from "./HorizontalCardList";
 import {useHistory} from "react-router-dom";
 import ReactPlaceholder from "react-placeholder";
 import HorizontalCardListPlaceHolder from "../placeholders/HorizontalCardListPlaceHolder";
+import axios from "axios";
+import {BASE_URL} from "../constants/Constants";
+import {useDispatch} from "react-redux";
+import {addCarouselItem} from "../actions/carouselActions";
 
 const useStyles = makeStyles((theme) => ({
         hr: {
@@ -37,32 +41,40 @@ const useStyles = makeStyles((theme) => ({
 export default function Category({category}) {
     const classes = useStyles();
     const [news, setNews] = useState([])
+    const [loading, setLoading] = useState(true)
     const history = useHistory()
+    const dispatch = useDispatch()
 
     useEffect(() => {
-        fetch("https://jsonplaceholder.typicode.com/users")
-            .then(response => response.json())
-            .then(news => setNews(news.slice(0, 4)));
+        //API
+        axios.get(`${BASE_URL}/api/categories/${category.id}/news`)
+            .then((response) => {
+                setLoading(false)
+                setNews(response.data.slice(0, 3))
+                dispatch(addCarouselItem(response.data[0]))
+            })
     }, [])
 
     const handleClickMore = () => {
-        history.push(`/${category.title.toLowerCase()}`)
+        //ROUTING
+        history.push(`/${category.name.toLowerCase()}`)
     }
 
     const onItemClicked = (item) => {
-        history.push(`/${category.title.toLowerCase()}/${item.id}`)
+        //ROUTING
+        history.push(`/${category.name.toLowerCase()}/${item.id}`)
     }
 
     return (
         <div className={classes.categoryContainer}>
             <div className={classes.titleAndMoreButtonContainer}>
-                <p className={classes.title}>{category.title}</p>
+                <p className={classes.title}>{category.name}</p>
                 <Button className={classes.moreButton} variant="contained" color="secondary" onClick={handleClickMore}>
                     More +
                 </Button>
             </div>
             <hr className={classes.hr}/>
-            <ReactPlaceholder ready={news.length !== 0} customPlaceholder={<HorizontalCardListPlaceHolder count={4}/>}>
+            <ReactPlaceholder ready={!loading} customPlaceholder={<HorizontalCardListPlaceHolder count={3}/>}>
                 <HorizontalCardList items={news} onClick={onItemClicked}/>
             </ReactPlaceholder>
         </div>

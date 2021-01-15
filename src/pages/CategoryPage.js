@@ -3,6 +3,8 @@ import {useHistory, useParams} from 'react-router-dom'
 import {useSelector} from "react-redux";
 import VerticalCardList from "../components/VerticalCardList";
 import {makeStyles} from "@material-ui/core/styles";
+import axios from "axios";
+import {BASE_URL} from "../constants/Constants";
 
 const useStyles = makeStyles((theme) => ({
         categoryTitle: {
@@ -19,21 +21,28 @@ export default function CategoryPage() {
     const history = useHistory()
 
     const onItemClicked = (item) => {
+        //ROUTING
         history.push(`/${category.toLowerCase()}/${item.id}`)
     }
 
     useEffect(() => {
-        fetch("https://jsonplaceholder.typicode.com/users")
-            .then(response => response.json())
-            .then(news => setNews(news));
+        const selectedCategory = categories.find((item) => {
+            return item.name.toLowerCase() === category
+        })
+        axios.get(`${BASE_URL}/api/categories/${selectedCategory.id}/news`)
+            .then((response) => {
+                setNews(response.data)
+            })
     }, [])
 
     const selectedCategory = categories.find((item) => {
-        return item.title.toLowerCase() === category
+        return item.name.toLowerCase() === category
     })
+
     return (
         <div>
-            <h1 className={classes.categoryTitle}>{selectedCategory.title}</h1>
+            <h1 className={classes.categoryTitle}>{selectedCategory.name}</h1>
             <VerticalCardList items={news} onClick={onItemClicked}/>
-        </div>)
+        </div>
+    )
 }

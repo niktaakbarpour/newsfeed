@@ -27,7 +27,7 @@ export default function Weather() {
                 data={data}
                 lang="en"
                 locationLabel="Isfahan"
-                unitsLabels={{temperature: 'C', windSpeed: 'Km/h'}}
+                unitsLabels={{temperature: 'C', windSpeed: 'km/h'}}
                 showForecast
             />
         </div>

@@ -16,16 +16,17 @@ const useStyles = makeStyles((theme) => ({
             marginTop: theme.spacing(3),
             width: theme.spacing(30),
             marginLeft: theme.spacing(2),
-            height:theme.spacing(10)
+            height: theme.spacing(10),
+            cursor: "pointer"
         },
         container: {
             display: "flex",
             justifyContent: "space-between"
         },
-    dateAndTime: {
+        dateAndTime: {
             marginTop: theme.spacing(5),
-        marginRight: theme.spacing(2)
-    }
+            marginRight: theme.spacing(2)
+        }
     })
 );
 
@@ -34,12 +35,12 @@ export default function Header() {
     const {date, time} = DateAndTime();
     return (
         <div className={classes.container}>
-            <img className={classes.image} height='100px' width='100px' src={logo} alt="Logo"/>
-            <p className={classes.name}>Veritical news!</p>
+            <a href=""><img className={classes.image} height='100px' width='100px' src={logo} alt="Logo"/></a>
+            <p className={classes.name}>Vertical news!</p>
             <div>
                 <h3 className={classes.dateAndTime}>
                     {date}
-                    <br />
+                    <br/>
                     {time}
                 </h3>
             </div>

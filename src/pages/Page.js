@@ -14,12 +14,14 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import Divider from "@material-ui/core/Divider";
 import NewsPage from "./NewsPage";
-import {setCategories} from "../actions/categoriesActions";
+import {setCategories, setCategoryLoading} from "../actions/categoriesActions";
 import SearchPage from "./SearchPage";
 import MostRead from "../components/MostRead";
 import Grid from "@material-ui/core/Grid";
 import Weather from "../components/Weather";
 import Footer from "../components/Footer";
+import axios from "axios";
+import {BASE_URL} from "../constants/Constants";
 
 const useStyles = makeStyles((theme) => ({
         routerRoot: {
@@ -63,18 +65,12 @@ export default function Page() {
     const theme = useTheme();
 
     useEffect(() => {
-        const categories = [{
-            id: 1,
-            title: 'Sports'
-        }, {
-            id: 2,
-            title: 'Politics'
-        }, {
-            id: 3,
-            title: "Economy"
-        }]
-        dispatch(setCategories(categories))
-        //TODO: getCategories from server
+        //API
+        axios.get(`${BASE_URL}/api/categories`)
+            .then((response) => {
+                dispatch(setCategories(response.data))
+                dispatch(setCategoryLoading(false))
+            })
     })
 
     return (

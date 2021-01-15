@@ -4,7 +4,6 @@ import {useTheme} from "@material-ui/core";
 import HorizontalCardListPlaceHolder from "./HorizontalCardListPlaceHolder";
 import 'react-placeholder/lib/reactPlaceholder.css';
 
-
 const useClasses = () => {
     const theme = useTheme()
     return {
@@ -13,6 +12,7 @@ const useClasses = () => {
             marginTop: theme.spacing(1),
             marginBottom: theme.spacing(1),
             width: "100%",
+            display: "inline-flex",
         },
         categoryContainer: {
             marginBottom: theme.spacing(4)

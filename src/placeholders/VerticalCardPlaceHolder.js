@@ -8,10 +8,7 @@ import 'react-placeholder/lib/reactPlaceholder.css';
 import clsx from "clsx";
 
 const useStyles = makeStyles((theme) => ({
-        root: {
-            maxWidth: theme.spacing(43),
-        },
-        card: {
+        cardContainer: {
             backgroundColor: theme.palette.placeHolder.secondary,
             display: "flex",
             flexDirection: "column",
@@ -32,7 +29,7 @@ export default function VerticalCardPlaceHolder() {
     const theme = useTheme();
 
     return (
-        <Card className={clsx(classes.card, "show-loading-animation")}>
+        <Card className={clsx(classes.cardContainer, "show-loading-animation")}>
             <div className={classes.image}/>
             <CardContent>
                 <TextBlock rows={3} color={theme.palette.placeHolder.main}/>
