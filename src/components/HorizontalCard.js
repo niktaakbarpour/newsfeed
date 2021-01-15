@@ -4,6 +4,7 @@ import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+import ScheduleIcon from "@material-ui/icons/Schedule";
 
 const useStyles = makeStyles((theme) => ({
         root: {
@@ -17,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
             marginLeft: theme.spacing(4),
             borderRadius: theme.spacing(1),
             cursor: "pointer",
+            width: theme.spacing(100)
             // [theme.breakpoints.down('md')]: {
             //     maxWidth: theme.spacing(80)
             // },
@@ -32,6 +34,11 @@ const useStyles = makeStyles((theme) => ({
             alignItems: "end",
             justifyContent: "flex-start"
         },
+    timeContainer: {
+        display: "flex",
+        justifyContent: "left",
+        alignItems: "center"
+    }
     })
 );
 
@@ -43,17 +50,16 @@ export default function HorizontalCard({item, onClick}) {
             <img alt="monster" src={`https://robohash.org/${item.id}?set=set2&size=200x200`}/>
             <CardActionArea className={classes.cardActionArea}>
                 <CardContent>
-                    <div className={classes.date}>
                         <Typography gutterBottom variant="h5" component="h2">
                             {item.name}
                         </Typography>
-                        <Typography gutterBottom variant="h5" component="h2">
-                            date
-                        </Typography>
-                    </div>
                     <Typography variant="body2" color="textSecondary" component="p">
                         {item.email}
                     </Typography>
+                    <div className={classes.timeContainer}>
+                        <ScheduleIcon color="disabled"/>
+                        <p>date</p>
+                    </div>
                 </CardContent>
             </CardActionArea>
         </Card>
