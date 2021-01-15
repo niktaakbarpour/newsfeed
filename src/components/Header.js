@@ -6,7 +6,7 @@ import {DateAndTime} from "./DateAndTime";
 const useStyles = makeStyles((theme) => ({
         name: {
             fontFamily: "Staatliches",
-            fontSize: "100px",
+            fontSize: "80px",
             // marginTop: "-120px",
             margin: "auto",
             alignSelf: "center",

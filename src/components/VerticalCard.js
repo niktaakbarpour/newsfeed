@@ -4,6 +4,7 @@ import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+import ScheduleIcon from '@material-ui/icons/Schedule';
 
 const useStyles = makeStyles((theme) => ({
         root: {
@@ -17,6 +18,11 @@ const useStyles = makeStyles((theme) => ({
             borderRadius: theme.spacing(1),
             cursor: "pointer",
             maxWidth: theme.spacing(43),
+        },
+        timeContainer: {
+            display: "flex",
+            justifyContent: "left",
+            alignItems: "center"
         }
     })
 );
@@ -35,6 +41,10 @@ export default function VerticalCard({item, onClick}) {
                     <Typography variant="body2" color="textSecondary" component="p">
                         {item.email}
                     </Typography>
+                    <div className={classes.timeContainer}>
+                        <ScheduleIcon color="disabled"/>
+                        <p>date</p>
+                    </div>
                 </CardContent>
             </CardActionArea>
         </Card>

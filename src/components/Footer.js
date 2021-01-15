@@ -6,6 +6,9 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import SendIcon from '@material-ui/icons/Send';
+import TextField from "@material-ui/core/TextField";
+import withStyles from "@material-ui/core/styles/withStyles";
+import InputBase from "@material-ui/core/InputBase";
 
 const useStyles = makeStyles((theme) => ({
 
@@ -29,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
             marginTop: theme.spacing(3),
             marginBottom: theme.spacing(3),
             margin: "auto",
-            border: "1px solid #555"
+            // border: "1px solid #555"
         },
 
         newsLetterInput: {
@@ -38,14 +41,14 @@ const useStyles = makeStyles((theme) => ({
             fontSize: ".9em",
             background: "transparent",
             color: theme.palette.text.reverse,
-            paddingTop: theme.spacing(1),
-            paddingRight: theme.spacing(2),
-            paddingBottom: theme.spacing(1),
-            paddingLeft: theme.spacing(2),
-            marginTop: theme.spacing(0),
-            marginRight: theme.spacing(-1),
-            marginBottom: theme.spacing(0),
-            marginLeft: theme.spacing(-1),
+            // paddingTop: theme.spacing(1),
+            // paddingRight: theme.spacing(2),
+            // paddingBottom: theme.spacing(1),
+            // paddingLeft: theme.spacing(2),
+            // marginTop: theme.spacing(0),
+            // marginRight: theme.spacing(-1),
+            // marginBottom: theme.spacing(0),
+            // marginLeft: theme.spacing(-1),
         },
 
         newsLetterBtn: {
@@ -53,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
             textDecoration: "none",
             color: theme.palette.text.reverse,
             // backgroundColor: "999",
-            marginTop: theme.spacing(0),
+            marginTop: theme.spacing(1),
             marginRight: theme.spacing(-1),
             marginBottom: theme.spacing(0),
             marginLeft: theme.spacing(-1),
@@ -98,6 +101,31 @@ const useStyles = makeStyles((theme) => ({
     })
 );
 
+const CssTextField = withStyles({
+    root: {
+        '& label': {
+            color: '#ccc',
+        },
+        '& label.Mui-focused': {
+            color: '#ccc',
+        },
+        '& .MuiInput-underline:after': {
+            borderBottomColor: '#ccc',
+        },
+        '& .MuiOutlinedInput-root': {
+            '& fieldset': {
+                borderColor: '#ccc',
+            },
+            '&:hover fieldset': {
+                borderColor: '#ccc',
+            },
+            '&.Mui-focused fieldset': {
+                borderColor: '#ccc',
+            },
+        },
+    },
+})(TextField);
+
 export default function Footer() {
     const classes = useStyles();
     const categories = useSelector(state => state.categories.list)
@@ -107,7 +135,20 @@ export default function Footer() {
 
             <p className={classes.footerTitle}>Get Latest News</p>
             <div className={classes.newsLetter}>
-                <input className={classes.newsLetterInput} type="email" placeholder="Enter Your Email"/>
+                {/*<TextField className={classes.newsLetterInput} id="outlined-basic" label="Enter Your Email" variant="outlined" />*/}
+                <CssTextField
+                    className={classes.margin}
+                    label="Enter Your Email"
+                    variant="outlined"
+                    id="custom-css-outlined-input"
+                    className={classes.newsLetterInput}
+                />
+                {/*<input className={classes.newsLetterInput} type="email" placeholder="Enter Your Email"/>*/}
+                {/*<InputBase*/}
+                {/*    className={classes.margin}*/}
+                {/*    defaultValue="Naked input"*/}
+                {/*    inputProps={{ 'aria-label': 'naked' }}*/}
+                {/*/>*/}
                 <a className={classes.newsLetterBtn} href=""><SendIcon/></a>
             </div>
 
