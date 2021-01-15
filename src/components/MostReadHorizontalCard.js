@@ -4,6 +4,7 @@ import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+import ScheduleIcon from "@material-ui/icons/Schedule";
 
 const useStyles = makeStyles((theme) => ({
 
@@ -30,14 +31,17 @@ const useStyles = makeStyles((theme) => ({
             width: theme.spacing(12),
             float: "left"
         },
-        date: {
+        timeContainer: {
+            display: "flex",
+            justifyContent: "left",
+            alignItems: "center",
             float: "right"
         },
         cardContent: {
             width: "100%"
         },
         categoryName: {
-            color:theme.palette.text.reverse,
+            color: theme.palette.text.reverse,
             margin: "auto",
             textAlign: "center"
         },
@@ -61,10 +65,9 @@ export default function MostReadHorizontalCard({item, onClick}) {
                                 business
                             </Typography>
                         </div>
-                        <div className={classes.date}>
-                            <Typography gutterBottom variant="h5" component="h2">
-                                date
-                            </Typography>
+                        <div className={classes.timeContainer}>
+                            <ScheduleIcon color="disabled"/>
+                            <p>date</p>
                         </div>
                     </div>
                     <div>

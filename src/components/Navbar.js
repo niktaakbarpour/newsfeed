@@ -55,6 +55,7 @@ const useStyles = makeStyles((theme) => ({
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
+            cursor: "pointer"
         },
         inputRoot: {
             color: 'inherit',
@@ -135,6 +136,7 @@ export default function NaveBar() {
                                 )
                             }
                         </div>
+
                         <div className={classes.search}>
                             <div className={classes.searchIcon}>
                                 <SearchIcon/>

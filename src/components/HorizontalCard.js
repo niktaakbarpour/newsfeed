@@ -19,26 +19,17 @@ const useStyles = makeStyles((theme) => ({
             borderRadius: theme.spacing(1),
             cursor: "pointer",
             width: theme.spacing(100)
-            // [theme.breakpoints.down('md')]: {
-            //     maxWidth: theme.spacing(80)
-            // },
-            // [theme.breakpoints.down('sm')]: {
-            //     maxWidth: theme.spacing(60)
-            // },
-            // [theme.breakpoints.down('xs')]: {
-            //     maxWidth: theme.spacing(40)
-            // },
         },
         cardActionArea: {
             display: "flex",
             alignItems: "end",
             justifyContent: "flex-start"
         },
-    timeContainer: {
-        display: "flex",
-        justifyContent: "left",
-        alignItems: "center"
-    }
+        timeContainer: {
+            display: "flex",
+            justifyContent: "left",
+            alignItems: "center"
+        }
     })
 );
 
@@ -50,9 +41,9 @@ export default function HorizontalCard({item, onClick}) {
             <img alt="monster" src={`https://robohash.org/${item.id}?set=set2&size=200x200`}/>
             <CardActionArea className={classes.cardActionArea}>
                 <CardContent>
-                        <Typography gutterBottom variant="h5" component="h2">
-                            {item.name}
-                        </Typography>
+                    <Typography gutterBottom variant="h5" component="h2">
+                        {item.name}
+                    </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
                         {item.email}
                     </Typography>
