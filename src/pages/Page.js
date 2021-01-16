@@ -105,7 +105,7 @@ export default function Page() {
             <NaveBar/>
             <div className={classes.carouselAndPage}>
                 <Grid container spacing={2}>
-                    <Grid container item xs={9} spacing={2}>
+                    <Grid container item xs={9} spacing={1}>
                         <div className={classes.routerRoot}>
                             <Switch>
                                 <Route exact path="/">

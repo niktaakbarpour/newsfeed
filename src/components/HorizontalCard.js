@@ -20,7 +20,8 @@ const useStyles = makeStyles((theme) => ({
             marginLeft: theme.spacing(4),
             borderRadius: theme.spacing(1),
             cursor: "pointer",
-            width: theme.spacing(100)
+            width: theme.spacing(100),
+            position: "relative",
         },
         cardActionArea: {
             display: "flex",
@@ -30,7 +31,9 @@ const useStyles = makeStyles((theme) => ({
         timeContainer: {
             display: "flex",
             justifyContent: "left",
-            alignItems: "center"
+            alignItems: "center",
+            position: "absolute",
+            bottom: "0",
         }
     })
 );
