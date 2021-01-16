@@ -33,7 +33,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CustomizedCarousel({items}) {
     const classes = useStyles();
-    const history = useHistory()
 
     const onNewsClick = (news) => {
         //ROUTING

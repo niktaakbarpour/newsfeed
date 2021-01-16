@@ -2,6 +2,7 @@ import React from 'react';
 import {makeStyles} from "@material-ui/core/styles";
 import MostReadVerticalCardList from "./MostReadVerticalCardList";
 import {useSelector} from "react-redux";
+import {sortNewsByDate} from "../util/Utils";
 
 const useStyles = makeStyles((theme) => ({
         title: {
@@ -13,8 +14,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MostRead() {
     const classes = useStyles();
-    const mostReadNews = useSelector((state) => state.collections.mostRead.list)
-
+    const mostReadNews = sortNewsByDate(useSelector((state) => state.collections.mostRead.list))
     const onItemClick = (news) => {
         window.open(news.link, '_blank')
     }

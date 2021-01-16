@@ -5,6 +5,7 @@ import VerticalCardList from "../components/VerticalCardList";
 import {makeStyles} from "@material-ui/core/styles";
 import axios from "axios";
 import {BASE_URL} from "../constants/Constants";
+import {sortNewsByDate} from "../util/Utils";
 
 const useStyles = makeStyles((theme) => ({
         categoryTitle: {
@@ -18,7 +19,6 @@ export default function CategoryPage() {
     const {category} = useParams()
     const categories = useSelector(state => state.categories.list)
     const [news, setNews] = useState([])
-    const history = useHistory()
 
     const onItemClicked = (item) => {
         //ROUTING
@@ -32,7 +32,7 @@ export default function CategoryPage() {
         //API
         axios.get(`${BASE_URL}/api/categories/${selectedCategory.id}/news`)
             .then((response) => {
-                setNews(response.data)
+                setNews(sortNewsByDate(response.data))
             })
     }, [])
 

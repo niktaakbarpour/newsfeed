@@ -5,10 +5,11 @@ import ReactPlaceholder from "react-placeholder";
 import HomePagePlaceHolder from "../placeholders/HomePagePlaceHolder";
 import FollowUs from "../components/FollowUs";
 import CustomizedCarousel from "../components/CustomizedCarousel";
+import {sortNewsByDate} from "../util/Utils";
 
 export default function HomePage() {
     const categories = useSelector(state => state.categories.list)
-    const carouselItems = useSelector(state => state.collections.carousel.list)
+    const carouselItems = sortNewsByDate(useSelector(state => state.collections.carousel.list))
     const isCategoryLoading = useSelector(state => state.categories.isLoading)
 
     return (

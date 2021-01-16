@@ -4,6 +4,7 @@ import {BASE_URL} from "../constants/Constants";
 import {useParams} from "react-router-dom";
 import VerticalCardList from "../components/VerticalCardList";
 import {makeStyles} from "@material-ui/core/styles";
+import {sortNewsByDate} from "../util/Utils";
 
 const useStyles = makeStyles((theme) => ({
         title: {
@@ -21,7 +22,7 @@ export default function SearchPage() {
         //API
         axios.get(`${BASE_URL}/api/news?query=${query}`)
             .then((response) => {
-                setNews(response.data)
+                setNews(sortNewsByDate(response.data))
             })
     }, [])
 
