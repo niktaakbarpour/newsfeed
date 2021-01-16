@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import Header from "../components/Header";
 import NaveBar from "../components/Navbar";
 import HomePage from "./HomePage";
@@ -22,6 +22,9 @@ import Weather from "../components/Weather";
 import Footer from "../components/Footer";
 import axios from "axios";
 import {BASE_URL} from "../constants/Constants";
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
+import Card from "@material-ui/core/Card";
 
 const useStyles = makeStyles((theme) => ({
         routerRoot: {
@@ -55,6 +58,11 @@ const useStyles = makeStyles((theme) => ({
                 marginRight: theme.spacing(30),
             },
         },
+        calendar: {
+            marginTop: theme.spacing(7),
+            boxShadow: theme.shadows[4],
+            borderRadius: theme.spacing(1),
+        }
     })
 )
 
@@ -63,6 +71,7 @@ export default function Page() {
     const dispatch = useDispatch()
     const classes = useStyles();
     const theme = useTheme();
+    const [value, onChange] = useState(new Date());
 
     useEffect(() => {
         //API
@@ -119,6 +128,9 @@ export default function Page() {
                     <Grid direction='column' item xs={3}>
                         <MostRead/>
                         <Weather/>
+                        <Card className={classes.calendar}>
+                            <Calendar onChange={onChange} value={value}/>
+                        </Card>
                     </Grid>
                 </Grid>
             </div>
