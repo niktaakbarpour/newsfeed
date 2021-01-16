@@ -97,7 +97,7 @@ export default function DrawerContent() {
         }
 
         //API
-        axios.post(`${BASE_URL}/api/feeds`, JSON.stringify(newFeed))
+        axios.post(`${BASE_URL}/api/feeds`, newFeed)
 
         feedName.value = ""
         categoryName.value = ""

@@ -22,13 +22,14 @@ export default function CategoryPage() {
 
     const onItemClicked = (item) => {
         //ROUTING
-        window.open(item.url, '_blank')
+        window.open(item.link, '_blank')
     }
 
     useEffect(() => {
         const selectedCategory = categories.find((item) => {
             return item.name.toLowerCase() === category
         })
+        //API
         axios.get(`${BASE_URL}/api/categories/${selectedCategory.id}/news`)
             .then((response) => {
                 setNews(response.data)

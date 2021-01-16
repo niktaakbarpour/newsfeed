@@ -47,11 +47,14 @@ export default function Category({category}) {
 
     useEffect(() => {
         //API
-        axios.get(`${BASE_URL}/api/categories/${category.id}/news`)
+        axios.get(`${BASE_URL}/api/categories/${category.id}/news?limit=3`)
             .then((response) => {
-                setLoading(false)
-                setNews(response.data.slice(0, 3))
-                dispatch(addCarouselItem(response.data[0]))
+                const news = response.data
+                if (news.length !== 0) {
+                    setLoading(false)
+                    setNews(news)
+                    dispatch(addCarouselItem(news[0]))
+                }
             })
     }, [])
 
@@ -62,7 +65,7 @@ export default function Category({category}) {
 
     const onItemClicked = (item) => {
         //ROUTING
-        window.open(item.url, '_blank')
+        window.open(item.link, '_blank')
     }
 
     return (

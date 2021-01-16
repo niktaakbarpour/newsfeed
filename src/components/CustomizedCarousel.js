@@ -37,7 +37,7 @@ export default function CustomizedCarousel({items}) {
 
     const onNewsClick = (news) => {
         //ROUTING
-        window.open(news.url, '_blank')
+        window.open(news.link, '_blank')
     }
 
     return (
