@@ -5,6 +5,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import ScheduleIcon from "@material-ui/icons/Schedule";
+import {formatDate} from "../util/Utils";
 
 const useStyles = makeStyles((theme) => ({
         root: {
@@ -38,18 +39,18 @@ export default function HorizontalCard({item, onClick}) {
 
     return (
         <Card className={classes.cardContainer} onClick={() => onClick(item)}>
-            <img alt="monster" src={`https://robohash.org/${item.id}?set=set2&size=200x200`}/>
+            <img width={200} height='200' alt={item.title} src={item.pictureUrl}/>
             <CardActionArea className={classes.cardActionArea}>
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
-                        {item.name}
+                        {item.title}
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
-                        {item.email}
+                        {item.description}
                     </Typography>
                     <div className={classes.timeContainer}>
                         <ScheduleIcon color="disabled"/>
-                        <p>date</p>
+                        <p>{formatDate(item.pubDate)}</p>
                     </div>
                 </CardContent>
             </CardActionArea>
