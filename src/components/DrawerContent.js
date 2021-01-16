@@ -151,15 +151,16 @@ export default function DrawerContent() {
             {/*    ))}*/}
             {/*</List>*/}
 
-            <List>
-                {feeds.map((feed, index) => (
-                    <ListItem key={index}>
+            {/*<List>*/}
+            {/*    {feeds.map((feed, index) => (*/}
+            {/*        <ListItem key={index}>*/}
                         <Card className={classes.card}>
-                            <CardActionArea onClick={onSourceClicked.bind(null, feed)}>
+                            <CardActionArea >
                                 <CardContent>
                                     <div className={classes.nameAndCategory}>
                                         <Typography variant="h6" component="h5">
-                                            {feed.name}
+                                            {/*{feed.name}*/}
+                                            Name
                                         </Typography>
                                         <div className={classes.oval}>
                                             <Typography className={classes.categoryName}>
@@ -173,9 +174,9 @@ export default function DrawerContent() {
                                 </CardContent>
                             </CardActionArea>
                         </Card>
-                    </ListItem>
-                ))}
-            </List>
+            {/*        </ListItem>*/}
+            {/*    ))}*/}
+            {/*</List>*/}
         </div>
     )
 }
