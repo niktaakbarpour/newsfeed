@@ -13,7 +13,6 @@ import IconButton from "@material-ui/core/IconButton";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import Divider from "@material-ui/core/Divider";
-import NewsPage from "./NewsPage";
 import {setCategories, setCategoryLoading} from "../actions/categoriesActions";
 import SearchPage from "./SearchPage";
 import MostRead from "../components/MostRead";
@@ -80,7 +79,7 @@ export default function Page() {
                 dispatch(setCategories(response.data))
                 dispatch(setCategoryLoading(false))
             })
-    })
+    },[])
 
     return (
         <div>
@@ -117,9 +116,6 @@ export default function Page() {
                                 </Route>
                                 <Route exact path="/:category">
                                     <CategoryPage/>
-                                </Route>
-                                <Route exact path="/:category/:newsId">
-                                    <NewsPage/>
                                 </Route>
                             </Switch>
                         </div>

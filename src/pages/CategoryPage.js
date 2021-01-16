@@ -22,7 +22,7 @@ export default function CategoryPage() {
 
     const onItemClicked = (item) => {
         //ROUTING
-        history.push(`/${category.toLowerCase()}/${item.id}`)
+        window.open(item.url, '_blank')
     }
 
     useEffect(() => {

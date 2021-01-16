@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {fade, makeStyles} from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
@@ -62,9 +62,7 @@ const useStyles = makeStyles((theme) => ({
             color: 'inherit',
         },
         inputInput: {
-            padding: theme.spacing(1, 1, 1, 0),
-            // vertical padding + font size from searchIcon
-            paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+            padding: theme.spacing(1, 1, 1, 1),
             transition: theme.transitions.create('width'),
             width: '100%',
             [theme.breakpoints.up('sm')]: {
@@ -78,7 +76,6 @@ const useStyles = makeStyles((theme) => ({
             display: "flex",
             justifyContent: "right"
         }
-
     })
 );
 
@@ -87,6 +84,7 @@ export default function NaveBar() {
     const classes = useStyles();
     const dispatch = useDispatch()
     const history = useHistory()
+    const [query, setQuery] = useState("")
 
     const onMenuClick = () => {
         dispatch(openDrawer())
@@ -99,9 +97,17 @@ export default function NaveBar() {
         }
     }
 
-    const log = () => {
-        console.log("hi");
-    };
+    const startSearch = () => {
+        history.push(`/search/${query}`)
+    }
+
+    const onQueryChanged = (ev) => {
+        const query = ev.target.value
+        setQuery(query)
+        if (!query) {
+            onHomeClick()
+        }
+    }
 
     const onNavItemClicked = (itemId) => {
         //ROUTING
@@ -155,11 +161,13 @@ export default function NaveBar() {
                                         root: classes.inputRoot,
                                         input: classes.inputInput,
                                     }}
+                                    onChange={onQueryChanged}
                                     inputProps={{'aria-label': 'search'}}
+                                    type='search'
                                 />
                             </div>
-                            <IconButton className={classes.searchIcon} variant="outlined">
-                                <SearchIcon onChange={log}/>
+                            <IconButton onClick={startSearch} className={classes.searchIcon} variant="outlined">
+                                <SearchIcon/>
                             </IconButton>
                         </div>
                     </Toolbar>

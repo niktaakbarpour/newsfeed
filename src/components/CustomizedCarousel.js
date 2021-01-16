@@ -37,7 +37,7 @@ export default function CustomizedCarousel({items}) {
 
     const onNewsClick = (news) => {
         //ROUTING
-        history.push(`/${news.category.name}/${news.id}`)
+        window.open(news.url, '_blank')
     }
 
     return (

@@ -29,7 +29,7 @@ export default function VerticalCard({item, onClick}) {
 
     return (
         <Card className={classes.cardContainer} onClick={() => onClick(item)}>
-            <img alt="monster" src={item.pictureUrl}/>
+            <img alt={item.title} src={item.pictureUrl}/>
             <CardActionArea>
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">

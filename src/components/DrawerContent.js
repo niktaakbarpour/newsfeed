@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
             borderRadius: theme.spacing(1),
             margin: theme.spacing(1),
         },
-        textfieldContainer: {
+        textFieldContainer: {
             marginBottom: theme.spacing(2),
             display: "flex",
             flexDirection: "column",
@@ -66,6 +66,7 @@ const useStyles = makeStyles((theme) => ({
 export default function DrawerContent() {
     const classes = useStyles()
     const [feeds, setFeeds] = useState([])
+    const [selectedColor, selectColor] = useState('#F44336')
 
     useEffect(() => {
         //API
@@ -73,26 +74,34 @@ export default function DrawerContent() {
             .then((response) => {
                 setFeeds(response.data)
             })
-    })
+    }, [])
 
     const addNewSource = () => {
-        const categoryName = ""
-        const categoryColor = "#FF0000"
-        const feedName = ""
-        const feedUrl = ""
+        const feedName = document.getElementById('feedName')
+        const categoryName = document.getElementById('feedCategory')
+        const feedUrl = document.getElementById('feedLink')
+        if (!(feedName.value && categoryName.value && feedUrl.value)) {
+            alert("Please Fill All Field.")
+            return
+        }
         const category = {
             id: 0,
-            name: categoryName,
-            color: categoryColor
+            name: categoryName.value,
+            color: selectedColor
         }
         const newFeed = {
             id: 0,
-            name: feedName,
-            url: feedUrl,
+            name: feedName.value,
+            url: feedUrl.value,
             category: category
         }
+
         //API
         axios.post(`${BASE_URL}/api/feeds`, JSON.stringify(newFeed))
+
+        feedName.value = ""
+        categoryName.value = ""
+        feedUrl.value = ""
     }
 
     const onSourceClicked = (item) => {
@@ -102,81 +111,61 @@ export default function DrawerContent() {
     return (
         <div>
             <form className={classes.form} noValidate autoComplete="off">
-                <div className={classes.textfieldContainer}>
+                <div className={classes.textFieldContainer}>
                     <TextField
-                        id="sourceName"
+                        id="feedName"
                         className={classes.input}
-                        name="link"
-                        variant="outlined"
-                        label="Link"
-                        type='search'
-                    />
-                    <TextField
-                        id="sourceName"
-                        className={classes.input}
-                        name="link"
                         variant="outlined"
                         label="Name"
                         type='search'
                     />
                     <TextField
-                        id="sourceName"
+                        id="feedCategory"
                         className={classes.input}
-                        name="link"
                         variant="outlined"
                         label="Category"
                         type='search'
                     />
+                    <TextField
+                        id="feedLink"
+                        className={classes.input}
+                        variant="outlined"
+                        label="Link"
+                        type='search'
+                    />
                 </div>
                 <div className={classes.colorPicker}>
-                    <CirclePicker/>
+                    <CirclePicker onChange={(color) => selectColor(color.hex)}/>
                 </div>
                 <Button className={classes.button} onClick={addNewSource} variant="contained" color="primary">
                     +
                 </Button>
             </form>
-            {/*<List>*/}
-            {/*    {feeds.map((feed, index) => (*/}
-            {/*        <ListItem key={index}>*/}
-            {/*            <Card className={classes.card}>*/}
-            {/*                <CardActionArea onClick={onSourceClicked.bind(null, feed)}>*/}
-            {/*                    <CardContent>*/}
-            {/*                        <Typography gutterBottom variant="h5" component="h2">*/}
-            {/*                            {feed.name}*/}
-            {/*                        </Typography>*/}
-            {/*                    </CardContent>*/}
-            {/*                </CardActionArea>*/}
-            {/*            </Card>*/}
-            {/*        </ListItem>*/}
-            {/*    ))}*/}
-            {/*</List>*/}
-
-            {/*<List>*/}
-            {/*    {feeds.map((feed, index) => (*/}
-            {/*        <ListItem key={index}>*/}
+            <List>
+                {feeds.map((feed) => (
+                    <ListItem key={feed.id}>
                         <Card className={classes.card}>
-                            <CardActionArea >
+                            <CardActionArea>
                                 <CardContent>
                                     <div className={classes.nameAndCategory}>
                                         <Typography variant="h6" component="h5">
-                                            {/*{feed.name}*/}
-                                            Name
+                                            {feed.name}
                                         </Typography>
                                         <div className={classes.oval}>
                                             <Typography className={classes.categoryName}>
-                                                business
+                                                {feed.category.name}
                                             </Typography>
                                         </div>
                                     </div>
                                     <Typography color="textSecondary">
-                                        Link
+                                        {feed.url}
                                     </Typography>
                                 </CardContent>
                             </CardActionArea>
                         </Card>
-            {/*        </ListItem>*/}
-            {/*    ))}*/}
-            {/*</List>*/}
+                    </ListItem>
+                ))}
+            </List>
         </div>
     )
 }

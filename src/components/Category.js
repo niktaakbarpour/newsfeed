@@ -62,7 +62,7 @@ export default function Category({category}) {
 
     const onItemClicked = (item) => {
         //ROUTING
-        history.push(`/${category.name.toLowerCase()}/${item.id}`)
+        window.open(item.url, '_blank')
     }
 
     return (
