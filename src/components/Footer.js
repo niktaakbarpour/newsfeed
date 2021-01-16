@@ -7,6 +7,7 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import SendIcon from '@material-ui/icons/Send';
 import InputBase from "@material-ui/core/InputBase";
+import {FACEBOOK_URL, INSTAGRAM_URL, TWITTER_URL, YOUTUBE_URL} from "../constants/Constants";
 
 const useStyles = makeStyles((theme) => ({
 
@@ -120,22 +121,22 @@ export default function Footer() {
 
             <ul className={classes.socialLinks}>
                 <li className={classes.socialLinkLi}>
-                    <a className={classes.socialLink} href="">
+                    <a className={classes.socialLink} href={INSTAGRAM_URL} target='_blank'>
                         <InstagramIcon/>
                     </a>
                 </li>
                 <li className={classes.socialLinkLi}>
-                    <a className={classes.socialLink} href="">
+                    <a className={classes.socialLink} href={TWITTER_URL} target='_blank'>
                         <TwitterIcon/>
                     </a>
                 </li>
                 <li className={classes.socialLinkLi}>
-                    <a className={classes.socialLink} href="">
+                    <a className={classes.socialLink} href={FACEBOOK_URL} target='_blank'>
                         <FacebookIcon/>
                     </a>
                 </li>
                 <li className={classes.socialLinkLi}>
-                    <a className={classes.socialLink} href="">
+                    <a className={classes.socialLink} href={YOUTUBE_URL} target='_blank'>
                         <YouTubeIcon/>
                     </a>
                 </li>

@@ -4,6 +4,7 @@ import FacebookIcon from "@material-ui/icons/Facebook";
 import InstagramIcon from '@material-ui/icons/Instagram';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import YouTubeIcon from '@material-ui/icons/YouTube';
+import {FACEBOOK_URL, INSTAGRAM_URL, TWITTER_URL, YOUTUBE_URL} from "../constants/Constants";
 
 const useStyles = makeStyles((theme) => ({
         item: {
@@ -26,16 +27,16 @@ export default function FollowUs() {
 
     return (
         <div>
-            <a className={classes.item} href="https://facebook.com" target="_blank">
+            <a className={classes.item} href={FACEBOOK_URL} target="_blank">
                 <FacebookIcon fontSize="large"/>
             </a>
-            <a className={classes.item} href="https://instagram.com" target="_blank">
+            <a className={classes.item} href={INSTAGRAM_URL} target="_blank">
                 <InstagramIcon fontSize="large"/>
             </a>
-            <a className={classes.item} href="https://twitter.com" target="_blank">
+            <a className={classes.item} href={TWITTER_URL} target="_blank">
                 <TwitterIcon fontSize="large"/>
             </a>
-            <a className={classes.item} href="https://youtube.com" target="_blank">
+            <a className={classes.item} href={YOUTUBE_URL} target="_blank">
                 <YouTubeIcon fontSize="large"/>
             </a>
         </div>
