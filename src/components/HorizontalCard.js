@@ -34,6 +34,14 @@ const useStyles = makeStyles((theme) => ({
             alignItems: "center",
             position: "absolute",
             bottom: "0",
+        },
+        placeholder: {
+            width: theme.spacing(25),
+            height: '100%',
+        },
+        image: {
+            width: theme.spacing(25),
+            height: '100%'
         }
     })
 );
@@ -43,7 +51,10 @@ export default function HorizontalCard({item, onClick}) {
 
     return (
         <Card className={classes.cardContainer} onClick={() => onClick(item)}>
-            <img width={200} height={200} alt={item.title} src={item.pictureUrl ? item.pictureUrl : imagePlaceHolder}/>
+            <div className={classes.placeholder}>
+                <img className={classes.image} alt={item.title}
+                     src={item.pictureUrl ? item.pictureUrl : imagePlaceHolder}/>
+            </div>
             <CardActionArea className={classes.cardActionArea}>
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">

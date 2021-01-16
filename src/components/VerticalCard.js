@@ -27,10 +27,6 @@ const useStyles = makeStyles((theme) => ({
             bottom: "0",
             marginTop: theme.spacing(2)
         },
-        image: {
-            width: "100%",
-            height: theme.spacing(30)
-        },
         cardContent: {
             padding: theme.spacing(2),
             '&:hover': {
@@ -45,10 +41,15 @@ const useStyles = makeStyles((theme) => ({
             WebkitLineClamp: "3",
             display: "-webkit-box",
             WebkitBoxOrient: 'vertical',
-        }
-        // cardAction: {
-        //         height: "100%"
-        // }
+        },
+        placeholder: {
+            width: '100%',
+            height: theme.spacing(30),
+        },
+        image: {
+            width: "100%",
+            height: theme.spacing(30)
+        },
     })
 );
 
@@ -57,7 +58,10 @@ export default function VerticalCard({item, onClick}) {
 
     return (
         <Card className={classes.cardContainer} onClick={() => onClick(item)}>
-            <img className={classes.image} alt={item.title} src={item.pictureUrl ? item.pictureUrl : imagePlaceHolder}/>
+            <div className={classes.placeholder}>
+                <img className={classes.image} alt={item.title}
+                     src={item.pictureUrl ? item.pictureUrl : imagePlaceHolder}/>
+            </div>
             <div className={classes.cardContent}>
                 <Typography gutterBottom variant="h6" component="h5">
                     {item.title}

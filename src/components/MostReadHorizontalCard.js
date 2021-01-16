@@ -47,6 +47,14 @@ const useStyles = makeStyles((theme) => ({
         },
         title: {
             fontSize: "small",
+        },
+        placeholder: {
+            width: theme.spacing(13),
+            height: '100%',
+        },
+        image: {
+            width: theme.spacing(13),
+            height: '100%'
         }
     })
 );
@@ -56,9 +64,11 @@ export default function MostReadHorizontalCard({item, onClick}) {
 
     return (
         <Card className={classes.cardContainer} onClick={() => onClick(item)}>
-            <img width={100} alt={item.title} src={item.pictureUrl ? item.pictureUrl : imagePlaceHolder}/>
+            <div className={classes.placeholder}>
+                <img className={classes.image} alt={item.title}
+                     src={item.pictureUrl ? item.pictureUrl : imagePlaceHolder}/>
+            </div>
             <CardActionArea>
-                {/*<CardContent className={classes.cardContent}>*/}
                 <div className={classes.dateAndCategory}>
                     <div className={classes.oval}>
                         <Typography variant="p6" className={classes.categoryName}>
@@ -70,7 +80,6 @@ export default function MostReadHorizontalCard({item, onClick}) {
                         {item.title}
                     </Typography>
                 </div>
-                {/*</CardContent>*/}
             </CardActionArea>
         </Card>
     );
