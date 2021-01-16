@@ -3,6 +3,9 @@ import {makeStyles} from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import Typography from '@material-ui/core/Typography';
+import ScheduleIcon from "@material-ui/icons/Schedule";
+import {formatDate} from "../util/Utils";
+import imagePlaceHolder from "../assets/imagePlaceHolder.jpg";
 
 const useStyles = makeStyles((theme) => ({
 
@@ -55,7 +58,7 @@ export default function MostReadHorizontalCard({item, onClick}) {
 
     return (
         <Card className={classes.cardContainer} onClick={() => onClick(item)}>
-            <img width={100} alt={item.title} src={item.pictureUrl}/>
+            <img width={100} alt={item.title} src={item.pictureUrl ? item.pictureUrl : imagePlaceHolder}/>
             <CardActionArea>
                 {/*<CardContent className={classes.cardContent}>*/}
                 <div className={classes.dateAndCategory}>
