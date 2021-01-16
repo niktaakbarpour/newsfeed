@@ -8,7 +8,6 @@ import {CirclePicker} from 'react-color'
 import Button from "@material-ui/core/Button";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import CardActionArea from "@material-ui/core/CardActionArea";
 
 const useStyles = makeStyles((theme) => ({
         form: {
@@ -30,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
             boxShadow: theme.shadows[4],
             borderRadius: theme.spacing(1),
             margin: theme.spacing(1),
+            width: theme.spacing(40)
         },
         textFieldContainer: {
             marginBottom: theme.spacing(2),
@@ -43,23 +43,25 @@ const useStyles = makeStyles((theme) => ({
 
         },
         colorPicker: {
-            marginBottom: theme.spacing(2)
+            marginBottom: theme.spacing(2),
+            margin: "auto"
         },
         oval: {
             border: "1px solid red",
             borderRadius: theme.spacing(10),
             backgroundColor: theme.palette.secondary.main,
-            width: theme.spacing(12),
-            float: "left"
+            width: theme.spacing(14),
+            float: "right",
+            marginBottom: theme.spacing(1),
+            marginTop: theme.spacing(1)
         },
         categoryName: {
             color: theme.palette.text.reverse,
             margin: "auto",
             textAlign: "center"
         },
-        nameAndCategory: {
-            display: "flex",
-            justifyContent: "space-between"
+        link: {
+            wordWrap: "break-word"
         }
     })
 )
@@ -145,23 +147,19 @@ export default function DrawerContent() {
                 {feeds.map((feed) => (
                     <ListItem key={feed.id}>
                         <Card className={classes.card}>
-                            <CardActionArea>
-                                <CardContent>
-                                    <div className={classes.nameAndCategory}>
-                                        <Typography variant="h6" component="h5">
-                                            {feed.name}
-                                        </Typography>
-                                        <div className={classes.oval}>
-                                            <Typography className={classes.categoryName}>
-                                                {feed.category.name}
-                                            </Typography>
-                                        </div>
-                                    </div>
-                                    <Typography color="textSecondary">
-                                        {feed.url}
+                            <CardContent>
+                                <Typography variant="h6" component="h5">
+                                    {feed.name}
+                                </Typography>
+                                <Typography color="textSecondary" className={classes.link}>
+                                    {feed.url}
+                                </Typography>
+                                <div className={classes.oval}>
+                                    <Typography className={classes.categoryName}>
+                                        {feed.category.name}
                                     </Typography>
-                                </CardContent>
-                            </CardActionArea>
+                                </div>
+                            </CardContent>
                         </Card>
                     </ListItem>
                 ))}
