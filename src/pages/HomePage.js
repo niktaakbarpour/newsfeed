@@ -8,7 +8,7 @@ import CustomizedCarousel from "../components/CustomizedCarousel";
 
 export default function HomePage() {
     const categories = useSelector(state => state.categories.list)
-    const carouselItems = useSelector(state => state.carousel.list)
+    const carouselItems = useSelector(state => state.collections.carousel.list)
     const isCategoryLoading = useSelector(state => state.categories.isLoading)
 
     return (

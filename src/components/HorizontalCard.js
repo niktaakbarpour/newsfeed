@@ -39,7 +39,7 @@ export default function HorizontalCard({item, onClick}) {
 
     return (
         <Card className={classes.cardContainer} onClick={() => onClick(item)}>
-            <img width={200} height='200' alt={item.title} src={item.pictureUrl}/>
+            <img width={200} height={200} alt={item.title} src={item.pictureUrl}/>
             <CardActionArea className={classes.cardActionArea}>
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">

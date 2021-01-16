@@ -8,7 +8,7 @@ import HorizontalCardListPlaceHolder from "../placeholders/HorizontalCardListPla
 import axios from "axios";
 import {BASE_URL} from "../constants/Constants";
 import {useDispatch} from "react-redux";
-import {addCarouselItem} from "../actions/carouselActions";
+import {addCarouselItem, addMostReadItem} from "../actions/collectionsAction";
 
 const useStyles = makeStyles((theme) => ({
         hr: {
@@ -54,6 +54,8 @@ export default function Category({category}) {
                     setLoading(false)
                     setNews(news)
                     dispatch(addCarouselItem(news[0]))
+                    dispatch(addMostReadItem(news[0]))
+                    dispatch(addMostReadItem(news[1]))
                 }
             })
     }, [])

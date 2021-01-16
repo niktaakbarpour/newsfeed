@@ -1,6 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {makeStyles} from "@material-ui/core/styles";
 import MostReadVerticalCardList from "./MostReadVerticalCardList";
+import {useSelector} from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
         title: {
@@ -12,18 +13,11 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MostRead() {
     const classes = useStyles();
-    const [news, setNews] = useState([])
-
-    useEffect(() => {
-        //API
-        fetch("https://jsonplaceholder.typicode.com/users")
-            .then(response => response.json())
-            .then(news => setNews(news));
-    }, [])
+    const mostReadNews = useSelector((state) => state.collections.mostRead.list)
 
     return (
         <div>
             <h3 className={classes.title}>Most Read</h3>
-            <MostReadVerticalCardList items={news}/>
+            <MostReadVerticalCardList items={mostReadNews}/>
         </div>)
 }
