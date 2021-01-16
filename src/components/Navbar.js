@@ -49,13 +49,14 @@ const useStyles = makeStyles((theme) => ({
         },
         searchIcon: {
             padding: theme.spacing(0, 2),
-            height: '100%',
-            position: 'absolute',
-            pointerEvents: 'none',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            cursor: "pointer"
+            // height: '100%',
+            // position: 'absolute',
+            // pointerEvents: 'none',
+            // display: 'flex',
+            // alignItems: 'center',
+            // justifyContent: 'center',
+            cursor: "pointer",
+            color: theme.palette.text.reverse
         },
         inputRoot: {
             color: 'inherit',
@@ -73,6 +74,10 @@ const useStyles = makeStyles((theme) => ({
                 },
             },
         },
+        searchContainer: {
+            display: "flex",
+            justifyContent: "right"
+        }
 
     })
 );
@@ -93,6 +98,10 @@ export default function NaveBar() {
             history.push("/")
         }
     }
+
+    const log = () => {
+        console.log("hi");
+    };
 
     const onNavItemClicked = (itemId) => {
         //ROUTING
@@ -138,19 +147,20 @@ export default function NaveBar() {
                                 )
                             }
                         </div>
-
-                        <div className={classes.search}>
-                            <div className={classes.searchIcon}>
-                                <SearchIcon/>
+                        <div className={classes.searchContainer}>
+                            <div className={classes.search}>
+                                <InputBase
+                                    placeholder="Search…"
+                                    classes={{
+                                        root: classes.inputRoot,
+                                        input: classes.inputInput,
+                                    }}
+                                    inputProps={{'aria-label': 'search'}}
+                                />
                             </div>
-                            <InputBase
-                                placeholder="Search…"
-                                classes={{
-                                    root: classes.inputRoot,
-                                    input: classes.inputInput,
-                                }}
-                                inputProps={{'aria-label': 'search'}}
-                            />
+                            <IconButton className={classes.searchIcon} variant="outlined">
+                                <SearchIcon onChange={log}/>
+                            </IconButton>
                         </div>
                     </Toolbar>
                 </AppBar>
