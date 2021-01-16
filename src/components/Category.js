@@ -48,15 +48,30 @@ export default function Category({category}) {
 
     useEffect(() => {
         //API
+
+        const getCarouselItems = (allNews) => {
+            for (let news of allNews) {
+                if (news.pictureUrl) {
+                    return news
+                }
+            }
+        }
+
         axios.get(`${BASE_URL}/api/categories/${category.id}/news?limit=3`)
             .then((response) => {
                 const news = sortNewsByDate(response.data)
                 if (news.length !== 0) {
                     setLoading(false)
                     setNews(news)
-                    dispatch(addCarouselItem(news[0]))
+                    const carouselItems = getCarouselItems(news)
+                    if (carouselItems) {
+                        dispatch(addCarouselItem(carouselItems))
+                    }
+
                     dispatch(addMostReadItem(news[0]))
-                    dispatch(addMostReadItem(news[1]))
+                    if (news.length > 1) {
+                        dispatch(addMostReadItem(news[1]))
+                    }
                 }
             })
     }, [])
