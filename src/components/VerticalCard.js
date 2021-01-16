@@ -65,7 +65,7 @@ export default function VerticalCard({item, onClick}) {
                     <Typography gutterBottom variant="h6" component="h5">
                         {item.title}
                     </Typography>
-                    <Typography className={classes.text} numberOfLines={1} variant="body2" color="textSecondary" component="p">
+                    <Typography className={classes.text} variant="body2" color="textSecondary" component="p">
                         {item.description}
                     </Typography>
                     <div className={classes.timeContainer}>
