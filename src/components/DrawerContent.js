@@ -8,6 +8,7 @@ import {CirclePicker} from 'react-color'
 import Button from "@material-ui/core/Button";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
+import {useHistory} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
         form: {
@@ -70,6 +71,7 @@ export default function DrawerContent() {
     const classes = useStyles()
     const [feeds, setFeeds] = useState([])
     const [selectedColor, selectColor] = useState('#F44336')
+    const history = useHistory()
 
     useEffect(() => {
         //API
@@ -101,14 +103,18 @@ export default function DrawerContent() {
 
         //API
         axios.post(`${BASE_URL}/api/feeds`, newFeed)
+            .then((response) => {
+                if (response.status === 200) {
+                    if (history.location.pathname !== "/") {
+                        history.push("/")
+                    }
+                    window.location.reload()
+                }
+            })
 
         feedName.value = ""
         categoryName.value = ""
         feedUrl.value = ""
-    }
-
-    const onSourceClicked = (item) => {
-
     }
 
     return (
