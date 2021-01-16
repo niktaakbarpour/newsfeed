@@ -1,11 +1,10 @@
 import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import {formatDate} from "../util/Utils";
+import imagePlaceHolder from "../assets/imagePlaceHolder.jpg"
 
 const useStyles = makeStyles((theme) => ({
         cardContainer: {
@@ -32,24 +31,24 @@ const useStyles = makeStyles((theme) => ({
             width: "100%",
             height: theme.spacing(30)
         },
-    cardContent: {
-        padding: theme.spacing(2),
-        '&:hover': {
-            backgroundColor: theme.palette.placeHolder.secondary
+        cardContent: {
+            padding: theme.spacing(2),
+            '&:hover': {
+                backgroundColor: theme.palette.placeHolder.secondary
+            },
+            height: "100%"
         },
-        height: "100%"
-    },
-    text: {
+        text: {
             textOverflow: "ellipsis",
-        overflow: "hidden",
-        whiteSpace: "nowrap",
-        WebkitLineClamp: "3",
-        display: "-webkit-box",
-        WebkitBoxOrient: 'vertical',
-    }
-    // cardAction: {
-    //         height: "100%"
-    // }
+            overflow: "hidden",
+            whiteSpace: "nowrap",
+            WebkitLineClamp: "3",
+            display: "-webkit-box",
+            WebkitBoxOrient: 'vertical',
+        }
+        // cardAction: {
+        //         height: "100%"
+        // }
     })
 );
 
@@ -58,23 +57,20 @@ export default function VerticalCard({item, onClick}) {
 
     return (
         <Card className={classes.cardContainer} onClick={() => onClick(item)}>
-            <img className={classes.image} alt={item.title} src={item.pictureUrl}/>
-            {/*<CardActionArea className={classes.cardAction}>*/}
-            {/*    <CardContent className={classes.cardContent}>*/}
+            <img className={classes.image} alt={item.title} src={item.pictureUrl ? item.pictureUrl : imagePlaceHolder}/>
             <div className={classes.cardContent}>
-                    <Typography gutterBottom variant="h6" component="h5">
-                        {item.title}
-                    </Typography>
-                    <Typography className={classes.text} numberOfLines={1} variant="body2" color="textSecondary" component="p">
-                        {item.description}
-                    </Typography>
-                    <div className={classes.timeContainer}>
-                        <ScheduleIcon color="disabled"/>
-                        <p>{formatDate(item.pubDate)}</p>
-                    </div>
+                <Typography gutterBottom variant="h6" component="h5">
+                    {item.title}
+                </Typography>
+                <Typography className={classes.text} numberOfLines={1} variant="body2" color="textSecondary"
+                            component="p">
+                    {item.description}
+                </Typography>
+                <div className={classes.timeContainer}>
+                    <ScheduleIcon color="disabled"/>
+                    <p>{formatDate(item.pubDate)}</p>
+                </div>
             </div>
-                {/*</CardContent>*/}
-            {/*</CardActionArea>*/}
         </Card>
     );
 }
