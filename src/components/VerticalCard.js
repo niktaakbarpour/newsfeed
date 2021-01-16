@@ -5,6 +5,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import ScheduleIcon from '@material-ui/icons/Schedule';
+import {formatDate} from "../util/Utils";
 
 const useStyles = makeStyles((theme) => ({
         cardContainer: {
@@ -40,7 +41,7 @@ export default function VerticalCard({item, onClick}) {
                     </Typography>
                     <div className={classes.timeContainer}>
                         <ScheduleIcon color="disabled"/>
-                        <p>date</p>
+                        <p>{formatDate(item.pubDate)}</p>
                     </div>
                 </CardContent>
             </CardActionArea>
