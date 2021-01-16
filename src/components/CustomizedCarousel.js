@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
         textContainer: {
             position: "absolute",
             bottom: 0,
-            paddingTop: theme.spacing(5),
+            paddingTop: theme.spacing(20),
             paddingBottom: theme.spacing(4),
             width: "100%",
             background: "linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1))",
