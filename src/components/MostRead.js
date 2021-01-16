@@ -15,9 +15,13 @@ export default function MostRead() {
     const classes = useStyles();
     const mostReadNews = useSelector((state) => state.collections.mostRead.list)
 
+    const onItemClick = (news) => {
+        window.open(news.link, '_blank')
+    }
+
     return (
         <div>
             <h3 className={classes.title}>Most Read</h3>
-            <MostReadVerticalCardList items={mostReadNews}/>
+            <MostReadVerticalCardList items={mostReadNews} onClick={onItemClick}/>
         </div>)
 }
