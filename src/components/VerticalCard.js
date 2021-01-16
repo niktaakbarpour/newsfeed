@@ -16,12 +16,40 @@ const useStyles = makeStyles((theme) => ({
             borderRadius: theme.spacing(1),
             cursor: "pointer",
             maxWidth: theme.spacing(43),
+            position: "relative",
+            height: theme.spacing(60)
+
         },
         timeContainer: {
             display: "flex",
             justifyContent: "left",
-            alignItems: "center"
-        }
+            alignItems: "center",
+            position: "absolute",
+            bottom: "0",
+            marginTop: theme.spacing(2)
+        },
+        image: {
+            width: "100%",
+            height: theme.spacing(30)
+        },
+    cardContent: {
+        padding: theme.spacing(2),
+        '&:hover': {
+            backgroundColor: theme.palette.placeHolder.secondary
+        },
+        height: "100%"
+    },
+    text: {
+            textOverflow: "ellipsis",
+        overflow: "hidden",
+        whiteSpace: "nowrap",
+        WebkitLineClamp: "3",
+        display: "-webkit-box",
+        WebkitBoxOrient: 'vertical',
+    }
+    // cardAction: {
+    //         height: "100%"
+    // }
     })
 );
 
@@ -30,21 +58,23 @@ export default function VerticalCard({item, onClick}) {
 
     return (
         <Card className={classes.cardContainer} onClick={() => onClick(item)}>
-            <img alt={item.title} src={item.pictureUrl}/>
-            <CardActionArea>
-                <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
+            <img className={classes.image} alt={item.title} src={item.pictureUrl}/>
+            {/*<CardActionArea className={classes.cardAction}>*/}
+            {/*    <CardContent className={classes.cardContent}>*/}
+            <div className={classes.cardContent}>
+                    <Typography gutterBottom variant="h6" component="h5">
                         {item.title}
                     </Typography>
-                    <Typography variant="body2" color="textSecondary" component="p">
+                    <Typography className={classes.text} numberOfLines={1} variant="body2" color="textSecondary" component="p">
                         {item.description}
                     </Typography>
                     <div className={classes.timeContainer}>
                         <ScheduleIcon color="disabled"/>
                         <p>{formatDate(item.pubDate)}</p>
                     </div>
-                </CardContent>
-            </CardActionArea>
+            </div>
+                {/*</CardContent>*/}
+            {/*</CardActionArea>*/}
         </Card>
     );
 }
