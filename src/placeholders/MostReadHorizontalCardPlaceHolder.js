@@ -5,6 +5,7 @@ import clsx from "clsx";
 import CardContent from "@material-ui/core/CardContent";
 import {TextBlock} from "react-placeholder/lib/placeholders";
 import {useTheme} from "@material-ui/core";
+import 'react-placeholder/lib/reactPlaceholder.css';
 
 const useStyles = makeStyles((theme) => ({
         cardContainer: {

@@ -1,19 +1,16 @@
 import React, {useEffect, useState} from "react";
-import {Card, CardContent, TextField} from "@material-ui/core";
+import {TextField} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
 import axios from "axios";
 import {BASE_URL} from "../constants/Constants";
 import {CirclePicker} from 'react-color'
 import Button from "@material-ui/core/Button";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
 import {useHistory} from "react-router-dom";
-import CategoryBadge from "./CategoryBadge";
 import {closeDrawer} from "../actions/drawerActions";
 import {useDispatch} from "react-redux";
-import DeleteIcon from '@material-ui/icons/Delete';
-import IconButton from "@material-ui/core/IconButton";
+import FeedList from "./FeedList";
+import ReactPlaceholder from "react-placeholder";
+import FeedListPlaceHolder from "../placeholders/FeedListPlaceHolder";
 
 const useStyles = makeStyles((theme) => ({
         form: {
@@ -31,12 +28,6 @@ const useStyles = makeStyles((theme) => ({
             marginLeft: theme.direction === 'ltr' ? theme.spacing(1) : 0,
             marginRight: theme.direction === 'rtl' ? theme.spacing(1) : 0,
         },
-        card: {
-            boxShadow: theme.shadows[4],
-            borderRadius: theme.spacing(1),
-            margin: theme.spacing(1),
-            width: theme.spacing(40)
-        },
         textFieldContainer: {
             marginBottom: theme.spacing(2),
             display: "flex",
@@ -50,18 +41,10 @@ const useStyles = makeStyles((theme) => ({
         colorPicker: {
             marginBottom: theme.spacing(2),
             margin: "auto"
-        },
-        badge: {},
-        link: {
-            wordWrap: "break-word"
-        },
-        badgeAndDeleteContainer: {
-            display: "flex",
-            alignItems: 'center',
-            justifyContent: "space-between",
         }
     })
 )
+
 export default function DrawerContent() {
     const classes = useStyles()
     const [feeds, setFeeds] = useState([])
@@ -180,32 +163,16 @@ export default function DrawerContent() {
                     +
                 </Button>
             </form>
-            <List>
-                {feeds.map((feed) => (
-                    <ListItem key={feed.id}>
-                        <Card className={classes.card}>
-                            <CardContent>
-                                <Typography variant="h6" component="h5">
-                                    {feed.name}
-                                </Typography>
-                                <Typography color="textSecondary" className={classes.link}>
-                                    {feed.url}
-                                </Typography>
-                                <div className={classes.badgeAndDeleteContainer}>
-                                    <CategoryBadge className={classes.badge}
-                                                   text={feed.category.name}
-                                                   color={feed.category.color}
-                                                   onClick={onCategoryClick.bind(null, feed.category)}
-                                    />
-                                    <IconButton onClick={deleteFeed.bind(null, feed)}>
-                                        <DeleteIcon color={"primary"}/>
-                                    </IconButton>
-                                </div>
-                            </CardContent>
-                        </Card>
-                    </ListItem>
-                ))}
-            </List>
+            <ReactPlaceholder ready={!isPending}
+                              showLoadingAnimation
+                              customPlaceholder={<FeedListPlaceHolder count={5}/>}>
+                {
+                    feeds.length === 0 ?
+                        <h1>Please Add Feeds</h1> :
+                        <FeedList feeds={feeds} onCategoryClick={onCategoryClick} deleteFeed={deleteFeed}/>
+                }
+            </ReactPlaceholder>
+
         </div>
     )
 }
