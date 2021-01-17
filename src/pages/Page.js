@@ -79,7 +79,7 @@ export default function Page() {
                 dispatch(setCategories(response.data))
                 dispatch(setCategoryLoading(false))
             })
-    },[])
+    }, [])
 
     return (
         <div>

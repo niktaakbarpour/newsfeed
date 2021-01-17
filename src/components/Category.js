@@ -46,7 +46,6 @@ export default function Category({category}) {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        //API
         const getCarouselItems = (allNews) => {
             for (let news of allNews) {
                 if (news.pictureUrl) {
@@ -54,7 +53,7 @@ export default function Category({category}) {
                 }
             }
         }
-
+        //API
         axios.get(`${BASE_URL}/api/categories/${category.id}/news?limit=3`)
             .then((response) => {
                 const news = response.data

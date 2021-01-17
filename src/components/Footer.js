@@ -6,7 +6,7 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import SendIcon from '@material-ui/icons/Send';
 import InputBase from "@material-ui/core/InputBase";
-import {FACEBOOK_URL, INSTAGRAM_URL, TWITTER_URL, YOUTUBE_URL} from "../constants/Constants";
+import {FACEBOOK_URL, GMAIL_URL, INSTAGRAM_URL, TWITTER_URL, YOUTUBE_URL} from "../constants/Constants";
 
 const useStyles = makeStyles((theme) => ({
 
@@ -114,7 +114,7 @@ export default function Footer() {
                     // inputProps={{ 'aria-label': 'Enter Your Email' }}
                     className={classes.newsLetterInput}
                 />
-                <a className={classes.newsLetterBtn} href="https://gmail.com" target='_blank'
+                <a className={classes.newsLetterBtn} href={GMAIL_URL} target='_blank'
                    rel='noreferrer'><SendIcon/></a>
             </div>
 
