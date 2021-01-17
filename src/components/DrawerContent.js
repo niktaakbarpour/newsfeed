@@ -12,7 +12,7 @@ import {useHistory} from "react-router-dom";
 import CategoryBadge from "./CategoryBadge";
 import {closeDrawer} from "../actions/drawerActions";
 import {useDispatch} from "react-redux";
-
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const useStyles = makeStyles((theme) => ({
         form: {
@@ -53,7 +53,11 @@ const useStyles = makeStyles((theme) => ({
         badge: {},
         link: {
             wordWrap: "break-word"
-        }
+        },
+    badgeAndDeleteContainer: {
+            display: "flex",
+        justifyContent: "space-between"
+    }
     })
 )
 export default function DrawerContent() {
@@ -166,10 +170,14 @@ export default function DrawerContent() {
                                 <Typography color="textSecondary" className={classes.link}>
                                     {feed.url}
                                 </Typography>
+                                <div className={classes.badgeAndDeleteContainer}>
                                 <CategoryBadge className={classes.badge}
                                                text={feed.category.name}
                                                color={feed.category.color}
-                                               onClick={onCategoryClick.bind(null, feed.category)}/>
+                                               onClick={onCategoryClick.bind(null, feed.category)}
+                                />
+                                <DeleteIcon color={"primary"}/>
+                                </div>
                             </CardContent>
                         </Card>
                     </ListItem>
