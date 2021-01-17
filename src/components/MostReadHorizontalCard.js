@@ -40,11 +40,9 @@ const useStyles = makeStyles((theme) => ({
         },
         image: {
             width: theme.spacing(13),
-            height: theme.spacing(12),
-            display: "block"
-            // maxHeight: theme.spacing(10)
-            // height: theme.spacing(13),
-            // maxHeight: "100%"
+            minHeight: theme.spacing(12),
+            height: "100%",
+            display: "block",
         }
     })
 );
