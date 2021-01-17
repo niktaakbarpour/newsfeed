@@ -42,6 +42,9 @@ const useStyles = makeStyles((theme) => ({
         image: {
             width: theme.spacing(25),
             height: '100%'
+        },
+        date: {
+            color: theme.palette.text.secondary
         }
     })
 );
@@ -65,7 +68,7 @@ export default function HorizontalCard({item, onClick}) {
                     </Typography>
                     <div className={classes.timeContainer}>
                         <ScheduleIcon color="disabled"/>
-                        <p>{formatDate(item.pubDate)}</p>
+                        <p className={classes.date}>{formatDate(item.pubDate)}</p>
                     </div>
                 </CardContent>
             </CardActionArea>

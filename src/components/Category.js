@@ -48,7 +48,6 @@ export default function Category({category}) {
 
     useEffect(() => {
         //API
-
         const getCarouselItems = (allNews) => {
             for (let news of allNews) {
                 if (news.pictureUrl) {
@@ -79,6 +78,10 @@ export default function Category({category}) {
     const handleClickMore = () => {
         //ROUTING
         history.push(`/${category.name.toLowerCase()}`)
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        })
     }
 
     const onItemClicked = (item) => {

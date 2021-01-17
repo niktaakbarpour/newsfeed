@@ -73,11 +73,16 @@ export default function DrawerContent() {
     }, [])
 
     const onCategoryClick = (category) => {
+        //ROUTING
         const url = `/${category.name.toLowerCase()}`
         if (history.location.pathname !== url) {
             history.push(url)
         }
         dispatch(closeDrawer())
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        })
     }
 
     const addNewSource = () => {
@@ -104,6 +109,7 @@ export default function DrawerContent() {
         axios.post(`${BASE_URL}/api/feeds`, newFeed)
             .then((response) => {
                 if (response.status === 200) {
+                    //ROUTING
                     if (history.location.pathname !== "/") {
                         history.push("/")
                     }

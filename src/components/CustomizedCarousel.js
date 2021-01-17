@@ -48,10 +48,15 @@ export default function CustomizedCarousel({items}) {
     }
 
     const onCategoryClick = (category) => {
+        //ROUTING
         const url = `/${category.name.toLowerCase()}`
         if (history.location.pathname !== url) {
             history.push(url)
         }
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        })
     }
 
     return (

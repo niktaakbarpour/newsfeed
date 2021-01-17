@@ -50,6 +50,9 @@ const useStyles = makeStyles((theme) => ({
             width: "100%",
             height: theme.spacing(30)
         },
+        date: {
+            color: theme.palette.text.secondary
+        }
     })
 );
 
@@ -72,7 +75,7 @@ export default function VerticalCard({item, onClick}) {
                 </Typography>
                 <div className={classes.timeContainer}>
                     <ScheduleIcon color="disabled"/>
-                    <p>{formatDate(item.pubDate)}</p>
+                    <p className={classes.date}>{formatDate(item.pubDate)}</p>
                 </div>
             </div>
         </Card>

@@ -95,10 +95,19 @@ export default function NaveBar() {
         if (history.location.pathname !== "/") {
             history.push("/")
         }
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        })
     }
 
     const startSearch = () => {
+        //ROUTING
         history.push(`/search/${query}`)
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        })
     }
 
     const onQueryChanged = (ev) => {
@@ -118,6 +127,10 @@ export default function NaveBar() {
         if (history.location.pathname !== url) {
             history.push(url)
         }
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        })
     }
 
     return (
