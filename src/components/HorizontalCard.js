@@ -25,7 +25,8 @@ const useStyles = makeStyles((theme) => ({
         cardActionArea: {
             display: "flex",
             alignItems: "end",
-            justifyContent: "flex-start"
+            justifyContent: "flex-start",
+            padding: theme.spacing(2)
         },
         timeContainer: {
             display: "flex",
@@ -36,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
         },
         placeholder: {
             width: theme.spacing(25),
-            height: '100%',
+            height: theme.spacing(22)
         },
         image: {
             width: theme.spacing(25),
@@ -44,7 +45,13 @@ const useStyles = makeStyles((theme) => ({
         },
         date: {
             color: theme.palette.text.secondary
-        }
+        },
+        text: {
+            textOverflow: "ellipsis",
+            overflow: "hidden",
+            // whiteSpace: "nowrap",
+        },
+        container: {}
     })
 );
 
@@ -62,8 +69,8 @@ export default function HorizontalCard({item, onClick}) {
                     <Typography gutterBottom variant="h5" component="h2">
                         {item.title}
                     </Typography>
-                    <Typography variant="body2" color="textSecondary" component="p">
-                        {item.description}
+                    <Typography className={classes.text} variant="body2" color="textSecondary" component="p">
+                        {item.subDescription2}
                     </Typography>
                     <div className={classes.timeContainer}>
                         <p className={classes.date}>{formatDate(item.pubDate)}</p>

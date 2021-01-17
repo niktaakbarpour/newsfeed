@@ -34,12 +34,12 @@ const useStyles = makeStyles((theme) => ({
             height: "100%"
         },
         text: {
-            textOverflow: "ellipsis",
-            overflow: "hidden",
-            whiteSpace: "nowrap",
-            WebkitLineClamp: "3",
-            display: "-webkit-box",
-            WebkitBoxOrient: 'vertical',
+            // textOverflow: "ellipsis",
+            // overflow: "hidden",
+            // whiteSpace: "nowrap",
+            // WebkitLineClamp: "3",
+            // display: "-webkit-box",
+            // WebkitBoxOrient: 'vertical',
         },
         placeholder: {
             width: '100%',
@@ -70,7 +70,7 @@ export default function VerticalCard({item, onClick}) {
                 </Typography>
                 <Typography className={classes.text} variant="body2" color="textSecondary"
                             component="p">
-                    {item.description}
+                    {item.subDescription}
                 </Typography>
                 <div className={classes.timeContainer}>
                     <p className={classes.date}>{formatDate(item.pubDate)}</p>
