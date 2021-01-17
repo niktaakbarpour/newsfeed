@@ -13,12 +13,13 @@ const useStyles = makeStyles((theme) => ({
             display: "flex",
             flexDirection: "column",
             boxShadow: theme.shadows[2],
-            margin: theme.spacing(2),
-            borderRadius: theme.spacing(2),
-            maxWidth: theme.spacing(43)
+            margin: theme.spacing(1),
+            borderRadius: theme.spacing(1),
+            maxWidth: theme.spacing(43),
+            height: theme.spacing(60)
         },
         image: {
-            height: theme.spacing(20)
+            height: theme.spacing(30)
         }
     })
 );
@@ -32,7 +33,7 @@ export default function VerticalCardPlaceHolder() {
         <Card className={clsx(classes.cardContainer, "show-loading-animation")}>
             <div className={classes.image}/>
             <CardContent>
-                <TextBlock rows={3} color={theme.palette.placeHolder.main}/>
+                <TextBlock rows={9} color={theme.palette.placeHolder.main}/>
             </CardContent>
         </Card>
     );
