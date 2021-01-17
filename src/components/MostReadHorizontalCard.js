@@ -5,8 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import imagePlaceHolder from "../assets/imagePlaceHolder.jpg";
 import CategoryBadge from "./CategoryBadge";
 import {useHistory} from "react-router-dom";
-import {formatDate} from "../util/Utils";
-import CardContent from "@material-ui/core/CardContent";
+import {getBrief} from "../util/Utils";
 
 const useStyles = makeStyles((theme) => ({
         cardContainer: {
@@ -75,7 +74,7 @@ export default function MostReadHorizontalCard({item, onClick}) {
                                color={item.category.color}
                                onClick={onCategoryClick.bind(null, item.category)}/>
                 <Typography className={classes.title} gutterBottom>
-                    {item.subTitle}
+                    {getBrief(item.title, 44)}
                 </Typography>
             </div>
         </Card>
