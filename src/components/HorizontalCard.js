@@ -4,7 +4,7 @@ import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import {formatDate} from "../util/Utils";
+import {formatDate, getBrief} from "../util/Utils";
 import imagePlaceHolder from "../assets/imagePlaceHolder.jpg";
 
 const useStyles = makeStyles((theme) => ({
@@ -70,7 +70,7 @@ export default function HorizontalCard({item, onClick}) {
                         {item.title}
                     </Typography>
                     <Typography className={classes.text} variant="body2" color="textSecondary" component="p">
-                        {item.subDescription2}
+                        {getBrief(item.description, 70)}
                     </Typography>
                     <div className={classes.timeContainer}>
                         <p className={classes.date}>{formatDate(item.pubDate)}</p>
