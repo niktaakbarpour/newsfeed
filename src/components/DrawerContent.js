@@ -13,6 +13,7 @@ import CategoryBadge from "./CategoryBadge";
 import {closeDrawer} from "../actions/drawerActions";
 import {useDispatch} from "react-redux";
 import DeleteIcon from '@material-ui/icons/Delete';
+import IconButton from "@material-ui/core/IconButton";
 
 const useStyles = makeStyles((theme) => ({
         form: {
@@ -54,10 +55,11 @@ const useStyles = makeStyles((theme) => ({
         link: {
             wordWrap: "break-word"
         },
-    badgeAndDeleteContainer: {
+        badgeAndDeleteContainer: {
             display: "flex",
-        justifyContent: "space-between"
-    }
+            alignItems: 'center',
+            justifyContent: "space-between",
+        }
     })
 )
 export default function DrawerContent() {
@@ -113,17 +115,31 @@ export default function DrawerContent() {
         axios.post(`${BASE_URL}/api/feeds`, newFeed)
             .then((response) => {
                 if (response.status === 200) {
-                    //ROUTING
-                    if (history.location.pathname !== "/") {
-                        history.push("/")
-                    }
-                    window.location.reload()
+                    reload()
                 }
             })
 
         feedName.value = ""
         categoryName.value = ""
         feedUrl.value = ""
+    }
+
+    const deleteFeed = (feed) => {
+        //API
+        axios.delete(`${BASE_URL}/api/feeds/${feed.id}`)
+            .then((response) => {
+                if (response.status === 200) {
+                    reload()
+                }
+            })
+    }
+
+    const reload = () => {
+        //ROUTING
+        if (history.location.pathname !== "/") {
+            history.push("/")
+        }
+        window.location.reload()
     }
 
     return (
@@ -171,12 +187,14 @@ export default function DrawerContent() {
                                     {feed.url}
                                 </Typography>
                                 <div className={classes.badgeAndDeleteContainer}>
-                                <CategoryBadge className={classes.badge}
-                                               text={feed.category.name}
-                                               color={feed.category.color}
-                                               onClick={onCategoryClick.bind(null, feed.category)}
-                                />
-                                <DeleteIcon color={"primary"}/>
+                                    <CategoryBadge className={classes.badge}
+                                                   text={feed.category.name}
+                                                   color={feed.category.color}
+                                                   onClick={onCategoryClick.bind(null, feed.category)}
+                                    />
+                                    <IconButton onClick={deleteFeed.bind(null, feed)}>
+                                        <DeleteIcon color={"primary"}/>
+                                    </IconButton>
                                 </div>
                             </CardContent>
                         </Card>
