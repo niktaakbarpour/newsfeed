@@ -9,6 +9,8 @@ import Button from "@material-ui/core/Button";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import {useHistory} from "react-router-dom";
+import CategoryBadge from "./CategoryBadge";
+
 
 const useStyles = makeStyles((theme) => ({
         form: {
@@ -32,7 +34,6 @@ const useStyles = makeStyles((theme) => ({
             margin: theme.spacing(1),
             width: theme.spacing(40)
         },
-
         textFieldContainer: {
             marginBottom: theme.spacing(2),
             display: "flex",
@@ -41,27 +42,13 @@ const useStyles = makeStyles((theme) => ({
         button: {
             display: "block",
             margin: "auto",
-            width: "max-content",
-
+            width: "max-content"
         },
         colorPicker: {
             marginBottom: theme.spacing(2),
             margin: "auto"
         },
-        oval: {
-            border: "1px solid red",
-            borderRadius: theme.spacing(10),
-            backgroundColor: theme.palette.secondary.main,
-            width: theme.spacing(14),
-            float: "right",
-            marginBottom: theme.spacing(1),
-            marginTop: theme.spacing(1)
-        },
-        categoryName: {
-            color: theme.palette.text.reverse,
-            margin: "auto",
-            textAlign: "center"
-        },
+        badge: {},
         link: {
             wordWrap: "break-word"
         }
@@ -161,11 +148,8 @@ export default function DrawerContent() {
                                 <Typography color="textSecondary" className={classes.link}>
                                     {feed.url}
                                 </Typography>
-                                <div className={classes.oval}>
-                                    <Typography className={classes.categoryName}>
-                                        {feed.category.name}
-                                    </Typography>
-                                </div>
+                                <CategoryBadge className={classes.badge} text={feed.category.name}
+                                               color={feed.category.color}/>
                             </CardContent>
                         </Card>
                     </ListItem>

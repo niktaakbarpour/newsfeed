@@ -23,6 +23,9 @@ let theme = createMuiTheme({
         placeHolder: {
             main: grey[300],
             secondary: grey[200]
+        },
+        hover: {
+            main: grey[200]
         }
     }
 });

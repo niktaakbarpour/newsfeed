@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
         cardContent: {
             padding: theme.spacing(2),
             '&:hover': {
-                backgroundColor: theme.palette.placeHolder.secondary
+                backgroundColor: theme.palette.hover.main
             },
             height: "100%"
         },
