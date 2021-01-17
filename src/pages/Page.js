@@ -107,22 +107,20 @@ export default function Page() {
             <NaveBar/>
             <div className={classes.carouselAndPage}>
                 <Grid container spacing={2}>
-                    <Grid container item xs={9} spacing={1}>
-                        <Grid item xs={12}>
-                            <div className={classes.routerRoot}>
-                                <Switch>
-                                    <Route exact path="/">
-                                        <HomePage/>
-                                    </Route>
-                                    <Route exact path="/search/:query">
-                                        <SearchPage/>
-                                    </Route>
-                                    <Route exact path="/:category">
-                                        <CategoryPage/>
-                                    </Route>
-                                </Switch>
-                            </div>
-                        </Grid>
+                    <Grid item xs={9} spacing={1}>
+                        <div className={classes.routerRoot}>
+                            <Switch>
+                                <Route exact path="/">
+                                    <HomePage/>
+                                </Route>
+                                <Route exact path="/search/:query">
+                                    <SearchPage/>
+                                </Route>
+                                <Route exact path="/:category">
+                                    <CategoryPage/>
+                                </Route>
+                            </Switch>
+                        </div>
                     </Grid>
 
                     <Grid item xs={3}>
