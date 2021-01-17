@@ -6,7 +6,7 @@ import {sortNewsByDate} from "../util/Utils";
 
 const useStyles = makeStyles((theme) => ({
         title: {
-            marginTop: theme.spacing(-1),
+            marginTop: theme.spacing(2),
             marginLeft: theme.spacing(1),
             marginBottom: theme.spacing(-1)
         },

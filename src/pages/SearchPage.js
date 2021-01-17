@@ -9,6 +9,7 @@ import {sortNewsByDate} from "../util/Utils";
 const useStyles = makeStyles((theme) => ({
         title: {
             marginLeft: theme.spacing(2),
+            marginBottom: theme.spacing(-1)
         },
     hr: {
         color: theme.palette.secondary.main,
@@ -38,7 +39,7 @@ export default function SearchPage() {
 
     return (
         <div>
-            <h1 className={classes.title}>{query}</h1>
+            <h1 className={classes.title}>Search For "{query}"</h1>
             <hr className={classes.hr}/>
             <VerticalCardList items={news} onClick={onItemClicked}/>
         </div>
