@@ -37,12 +37,13 @@ export default function CategoryPage() {
         const selectedCategory = categories.find((item) => {
             return item.name.toLowerCase() === category
         })
+        setNews([])
         //API
         axios.get(`${BASE_URL}/api/categories/${selectedCategory.id}/news`)
             .then((response) => {
                 setNews(response.data)
             })
-    }, [])
+    }, [category])
 
     const selectedCategory = categories.find((item) => {
         return item.name.toLowerCase() === category
