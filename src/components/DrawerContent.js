@@ -65,6 +65,7 @@ const useStyles = makeStyles((theme) => ({
 export default function DrawerContent() {
     const classes = useStyles()
     const [feeds, setFeeds] = useState([])
+    const [isPending, setIsPending] = useState(true)
     const [selectedColor, selectColor] = useState('#F44336')
     const history = useHistory()
     const dispatch = useDispatch()
@@ -75,6 +76,7 @@ export default function DrawerContent() {
         axios.get(`${BASE_URL}/api/feeds`)
             .then((response) => {
                 setFeeds(response.data)
+                setIsPending(false)
             })
     }, [])
 
@@ -111,6 +113,8 @@ export default function DrawerContent() {
             category: category
         }
 
+        setIsPending(true)
+
         //API
         axios.post(`${BASE_URL}/api/feeds`, newFeed)
             .then((response) => {
@@ -126,6 +130,7 @@ export default function DrawerContent() {
 
     const deleteFeed = (feed) => {
         //API
+        setIsPending(true)
         axios.delete(`${BASE_URL}/api/feeds/${feed.id}`)
             .then((response) => {
                 if (response.status === 200) {
