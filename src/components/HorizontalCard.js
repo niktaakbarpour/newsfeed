@@ -4,7 +4,6 @@ import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import ScheduleIcon from "@material-ui/icons/Schedule";
 import {formatDate} from "../util/Utils";
 import imagePlaceHolder from "../assets/imagePlaceHolder.jpg";
 
@@ -67,7 +66,6 @@ export default function HorizontalCard({item, onClick}) {
                         {item.description}
                     </Typography>
                     <div className={classes.timeContainer}>
-                        <ScheduleIcon color="disabled"/>
                         <p className={classes.date}>{formatDate(item.pubDate)}</p>
                     </div>
                 </CardContent>

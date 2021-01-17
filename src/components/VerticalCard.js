@@ -2,7 +2,6 @@ import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
-import ScheduleIcon from '@material-ui/icons/Schedule';
 import {formatDate} from "../util/Utils";
 import imagePlaceHolder from "../assets/imagePlaceHolder.jpg"
 
@@ -74,7 +73,6 @@ export default function VerticalCard({item, onClick}) {
                     {item.description}
                 </Typography>
                 <div className={classes.timeContainer}>
-                    <ScheduleIcon color="disabled"/>
                     <p className={classes.date}>{formatDate(item.pubDate)}</p>
                 </div>
             </div>
