@@ -29,7 +29,7 @@ export default function MostRead() {
 
     return (
         <div>
-            <h2 className={classes.title}>Most Read</h2>
+            <h1 className={classes.title}>Most Read</h1>
             <hr className={classes.hr}/>
             <MostReadVerticalCardList items={mostReadNews} onClick={onItemClick}/>
         </div>)
