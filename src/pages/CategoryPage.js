@@ -5,7 +5,6 @@ import VerticalCardList from "../components/VerticalCardList";
 import {makeStyles} from "@material-ui/core/styles";
 import axios from "axios";
 import {BASE_URL} from "../constants/Constants";
-import {sortNewsByDate} from "../util/Utils";
 
 const useStyles = makeStyles((theme) => ({
         categoryTitle: {
@@ -13,13 +12,13 @@ const useStyles = makeStyles((theme) => ({
             marginBottom: theme.spacing(-1)
 
         },
-    hr: {
-        color: theme.palette.secondary.main,
-        height: theme.spacing(1),
-        backgroundColor: theme.palette.secondary.main,
-        width: "100%",
-        display: "inline-flex",
-    },
+        hr: {
+            color: theme.palette.secondary.main,
+            height: theme.spacing(1),
+            backgroundColor: theme.palette.secondary.main,
+            width: "100%",
+            display: "inline-flex",
+        },
     })
 );
 
@@ -41,7 +40,7 @@ export default function CategoryPage() {
         //API
         axios.get(`${BASE_URL}/api/categories/${selectedCategory.id}/news`)
             .then((response) => {
-                setNews(sortNewsByDate(response.data))
+                setNews(response.data)
             })
     }, [])
 

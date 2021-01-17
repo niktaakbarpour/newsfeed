@@ -73,7 +73,7 @@ export default function VerticalCard({item, onClick}) {
                     {getBrief(item.description, 44)}
                 </Typography>
                 <div className={classes.timeContainer}>
-                    <p className={classes.date}>{formatDate(item.pubDate)}</p>
+                    <p className={classes.date}>{formatDate(item.dateMillies)}</p>
                 </div>
             </div>
         </Card>

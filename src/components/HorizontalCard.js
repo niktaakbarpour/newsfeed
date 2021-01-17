@@ -70,10 +70,10 @@ export default function HorizontalCard({item, onClick}) {
                         {item.title}
                     </Typography>
                     <Typography className={classes.text} variant="body2" color="textSecondary" component="p">
-                        {getBrief(item.description, 70)}
+                        {getBrief(item.description, 100)}
                     </Typography>
                     <div className={classes.timeContainer}>
-                        <p className={classes.date}>{formatDate(item.pubDate)}</p>
+                        <p className={classes.date}>{formatDate(item.dateMillies)}</p>
                     </div>
                 </CardContent>
             </CardActionArea>

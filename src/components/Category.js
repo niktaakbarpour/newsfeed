@@ -9,7 +9,6 @@ import axios from "axios";
 import {BASE_URL} from "../constants/Constants";
 import {useDispatch} from "react-redux";
 import {addCarouselItem, addMostReadItem} from "../actions/collectionsAction";
-import {sortNewsByDate} from "../util/Utils";
 
 const useStyles = makeStyles((theme) => ({
         hr: {
@@ -58,7 +57,7 @@ export default function Category({category}) {
 
         axios.get(`${BASE_URL}/api/categories/${category.id}/news?limit=3`)
             .then((response) => {
-                const news = sortNewsByDate(response.data)
+                const news = response.data
                 if (news.length !== 0) {
                     setLoading(false)
                     setNews(news)
