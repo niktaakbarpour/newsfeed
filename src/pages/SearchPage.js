@@ -8,7 +8,7 @@ import {sortNewsByDate} from "../util/Utils";
 
 const useStyles = makeStyles((theme) => ({
         title: {
-            marginLeft: theme.spacing(2)
+            marginLeft: theme.spacing(2),
         },
     hr: {
         color: theme.palette.secondary.main,

@@ -6,8 +6,9 @@ import {sortNewsByDate} from "../util/Utils";
 
 const useStyles = makeStyles((theme) => ({
         title: {
-            marginTop: theme.spacing(0),
-            marginLeft: theme.spacing(1)
+            marginTop: theme.spacing(-1),
+            marginLeft: theme.spacing(1),
+            marginBottom: theme.spacing(-1)
         },
     hr: {
         color: theme.palette.secondary.main,
@@ -28,7 +29,7 @@ export default function MostRead() {
 
     return (
         <div>
-            <h3 className={classes.title}>Most Read</h3>
+            <h2 className={classes.title}>Most Read</h2>
             <hr className={classes.hr}/>
             <MostReadVerticalCardList items={mostReadNews} onClick={onItemClick}/>
         </div>)
