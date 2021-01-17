@@ -19,14 +19,12 @@ const useStyles = makeStyles((theme) => ({
             marginLeft: theme.spacing(4),
             borderRadius: theme.spacing(1),
             cursor: "pointer",
-            width: theme.spacing(100),
             position: "relative",
         },
         cardActionArea: {
             display: "flex",
             alignItems: "end",
             justifyContent: "flex-start",
-            padding: theme.spacing(2)
         },
         timeContainer: {
             display: "flex",
@@ -70,7 +68,7 @@ export default function HorizontalCard({item, onClick}) {
                         {item.title}
                     </Typography>
                     <Typography className={classes.text} variant="body2" color="textSecondary" component="p">
-                        {getBrief(item.description, 100)}
+                        {getBrief(item.description, 180)}
                     </Typography>
                     <div className={classes.timeContainer}>
                         <p className={classes.date}>{formatDate(item.dateMillies)}</p>

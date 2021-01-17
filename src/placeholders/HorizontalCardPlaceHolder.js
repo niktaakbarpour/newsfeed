@@ -1,10 +1,10 @@
 import React from "react";
-import Card from "@material-ui/core/Card";
 import {makeStyles} from "@material-ui/core/styles";
+import {useTheme} from "@material-ui/core";
+import Card from "@material-ui/core/Card";
 import clsx from "clsx";
 import CardContent from "@material-ui/core/CardContent";
 import {TextBlock} from "react-placeholder/lib/placeholders";
-import {useTheme} from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
         cardContainer: {
@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
             flexDirection: "row",
             boxShadow: theme.shadows[2],
             margin: theme.spacing(1),
+            marginLeft: theme.spacing(4),
             borderRadius: theme.spacing(1),
         },
         content: {
@@ -21,13 +22,13 @@ const useStyles = makeStyles((theme) => ({
             alignItems: 'center'
         },
         image: {
-            minHeight: theme.spacing(12),
-            width: theme.spacing(13),
+            width: theme.spacing(25),
+            height: theme.spacing(22)
         }
     })
 );
 
-export default function MostReadHorizontalCardPlaceHolder() {
+export default function HorizontalCardPlaceHolder() {
     const classes = useStyles();
     const theme = useTheme();
 
@@ -35,7 +36,7 @@ export default function MostReadHorizontalCardPlaceHolder() {
         <Card className={clsx(classes.cardContainer, "show-loading-animation")}>
             <div className={classes.image}/>
             <CardContent className={classes.content}>
-                <TextBlock rows={2} color={theme.palette.placeHolder.main}/>
+                <TextBlock rows={5} color={theme.palette.placeHolder.main}/>
             </CardContent>
         </Card>
     )
