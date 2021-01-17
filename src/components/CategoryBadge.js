@@ -8,7 +8,8 @@ const useStyle = (color) => (makeStyles((theme) => ({
             borderRadius: theme.spacing(2),
             backgroundColor: color,
             display: "inline-block",
-            padding: theme.spacing(0, 1, 0, 1)
+            padding: theme.spacing(0, 1, 0, 1),
+            cursor: "pointer"
         },
         categoryName: {
             color: theme.palette.text.reverse,
@@ -16,11 +17,14 @@ const useStyle = (color) => (makeStyles((theme) => ({
     })
 ))()
 
-export default function CategoryBadge({className, text, color}) {
+export default function CategoryBadge({className, text, color, onClick}) {
     const classes = useStyle(color)
 
     return (
-        <div className={clsx(classes.oval, className)}>
+        <div onClick={(ev) => {
+            ev.stopPropagation()
+            onClick()
+        }} className={clsx(classes.oval, className)}>
             <Typography variant="p6" className={classes.categoryName}>
                 {text}
             </Typography>

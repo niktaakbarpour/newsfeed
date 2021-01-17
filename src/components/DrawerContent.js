@@ -10,6 +10,8 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import {useHistory} from "react-router-dom";
 import CategoryBadge from "./CategoryBadge";
+import {closeDrawer} from "../actions/drawerActions";
+import {useDispatch} from "react-redux";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -59,6 +61,8 @@ export default function DrawerContent() {
     const [feeds, setFeeds] = useState([])
     const [selectedColor, selectColor] = useState('#F44336')
     const history = useHistory()
+    const dispatch = useDispatch()
+
 
     useEffect(() => {
         //API
@@ -67,6 +71,14 @@ export default function DrawerContent() {
                 setFeeds(response.data)
             })
     }, [])
+
+    const onCategoryClick = (category) => {
+        const url = `/${category.name.toLowerCase()}`
+        if (history.location.pathname !== url) {
+            history.push(url)
+        }
+        dispatch(closeDrawer())
+    }
 
     const addNewSource = () => {
         const feedName = document.getElementById('feedName')
@@ -148,8 +160,10 @@ export default function DrawerContent() {
                                 <Typography color="textSecondary" className={classes.link}>
                                     {feed.url}
                                 </Typography>
-                                <CategoryBadge className={classes.badge} text={feed.category.name}
-                                               color={feed.category.color}/>
+                                <CategoryBadge className={classes.badge}
+                                               text={feed.category.name}
+                                               color={feed.category.color}
+                                               onClick={onCategoryClick.bind(null, feed.category)}/>
                             </CardContent>
                         </Card>
                     </ListItem>

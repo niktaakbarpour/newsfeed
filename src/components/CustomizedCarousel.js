@@ -2,6 +2,7 @@ import React from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import {Carousel} from 'react-responsive-carousel';
+import CategoryBadge from "./CategoryBadge";
 import {useHistory} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -27,16 +28,30 @@ const useStyles = makeStyles((theme) => ({
             padding: "10px",
             fontSize: "12px",
             textAlign: "start",
+        },
+        badge: {
+            position: "absolute",
+            top: 0,
+            right: 0,
+            margin: theme.spacing(2)
         }
     })
 );
 
 export default function CustomizedCarousel({items}) {
     const classes = useStyles();
+    const history = useHistory()
 
     const onNewsClick = (news) => {
         //ROUTING
         window.open(news.link, '_blank')
+    }
+
+    const onCategoryClick = (category) => {
+        const url = `/${category.name.toLowerCase()}`
+        if (history.location.pathname !== url) {
+            history.push(url)
+        }
     }
 
     return (
@@ -46,6 +61,10 @@ export default function CustomizedCarousel({items}) {
                     items.map(news => (
                         <div className={classes.item} key={news.id} onClick={onNewsClick.bind(null, news)}>
                             <img className={classes.image} src={news.pictureUrl} alt={news.title}/>
+                            <CategoryBadge className={classes.badge}
+                                           text={news.category.name}
+                                           color={news.category.color}
+                                           onClick={onCategoryClick.bind(null, news.category)}/>
                             <div className={classes.textContainer}>
                                 <h1>{news.title}</h1>
                                 <p>{news.description}</p>

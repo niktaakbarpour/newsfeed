@@ -4,6 +4,7 @@ import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
 import imagePlaceHolder from "../assets/imagePlaceHolder.jpg";
 import CategoryBadge from "./CategoryBadge";
+import {useHistory} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
         cardContainer: {
@@ -50,6 +51,14 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MostReadHorizontalCard({item, onClick}) {
     const classes = useStyles();
+    const history = useHistory()
+
+    const onCategoryClick = (category) => {
+        const url = `/${category.name.toLowerCase()}`
+        if (history.location.pathname !== url) {
+            history.push(url)
+        }
+    }
 
     return (
         <Card className={classes.cardContainer} onClick={() => onClick(item)}>
@@ -58,7 +67,10 @@ export default function MostReadHorizontalCard({item, onClick}) {
                      src={item.pictureUrl ? item.pictureUrl : imagePlaceHolder}/>
             </div>
             <div className={classes.container}>
-                <CategoryBadge className={classes.badge} text={item.category.name} color={item.category.color}/>
+                <CategoryBadge className={classes.badge}
+                               text={item.category.name}
+                               color={item.category.color}
+                               onClick={onCategoryClick.bind(null, item.category)}/>
                 <Typography className={classes.title} gutterBottom>
                     {item.title}
                 </Typography>

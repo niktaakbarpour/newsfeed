@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {useHistory, useParams} from 'react-router-dom'
+import {useParams} from 'react-router-dom'
 import {useSelector} from "react-redux";
 import VerticalCardList from "../components/VerticalCardList";
 import {makeStyles} from "@material-ui/core/styles";
