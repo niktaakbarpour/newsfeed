@@ -8,7 +8,14 @@ const useStyles = makeStyles((theme) => ({
         title: {
             marginTop: theme.spacing(0),
             marginLeft: theme.spacing(1)
-        }
+        },
+    hr: {
+        color: theme.palette.secondary.main,
+        height: theme.spacing(1),
+        backgroundColor: theme.palette.secondary.main,
+        width: "100%",
+        display: "inline-flex",
+    },
     })
 );
 
@@ -22,6 +29,7 @@ export default function MostRead() {
     return (
         <div>
             <h3 className={classes.title}>Most Read</h3>
+            <hr className={classes.hr}/>
             <MostReadVerticalCardList items={mostReadNews} onClick={onItemClick}/>
         </div>)
 }

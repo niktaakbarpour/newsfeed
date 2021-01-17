@@ -10,7 +10,14 @@ import {sortNewsByDate} from "../util/Utils";
 const useStyles = makeStyles((theme) => ({
         categoryTitle: {
             marginLeft: theme.spacing(2)
-        }
+        },
+    hr: {
+        color: theme.palette.secondary.main,
+        height: theme.spacing(1),
+        backgroundColor: theme.palette.secondary.main,
+        width: "100%",
+        display: "inline-flex",
+    },
     })
 );
 
@@ -43,6 +50,7 @@ export default function CategoryPage() {
     return (
         <div>
             <h1 className={classes.categoryTitle}>{selectedCategory.name}</h1>
+            <hr className={classes.hr}/>
             <VerticalCardList items={news} onClick={onItemClicked}/>
         </div>
     )
