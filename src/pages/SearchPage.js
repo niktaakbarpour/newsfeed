@@ -4,6 +4,8 @@ import {BASE_URL} from "../constants/Constants";
 import {useParams} from "react-router-dom";
 import VerticalCardList from "../components/VerticalCardList";
 import {makeStyles} from "@material-ui/core/styles";
+import ReactPlaceholder from "react-placeholder";
+import VerticalCardListPlaceHolder from "../placeholders/VerticalCardListPlaceHolder";
 
 const useStyles = makeStyles((theme) => ({
         title: {
@@ -24,23 +26,36 @@ export default function SearchPage() {
     const classes = useStyles();
     const {query} = useParams()
     const [news, setNews] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
         //API
+        setIsLoading(true)
         axios.get(`${BASE_URL}/api/news?query=${query}`)
             .then((response) => {
+                setIsLoading(false)
                 setNews(response.data)
             })
-    }, [])
+    }, [query])
 
-    const onItemClicked = () => {
+    const onItemClicked = (item) => {
+        //ROUTING
+        window.open(item.link, '_blank')
     }
 
     return (
         <div>
             <h1 className={classes.title}>Search For "{query}"</h1>
             <hr className={classes.hr}/>
-            <VerticalCardList items={news} onClick={onItemClicked}/>
+            <ReactPlaceholder ready={!isLoading}
+                              showLoadingAnimation
+                              customPlaceholder={<VerticalCardListPlaceHolder count={10}/>}>
+                {
+                    news.length === 0 ?
+                        <h1>Nothing Found</h1> :
+                        <VerticalCardList items={news} onClick={onItemClicked}/>
+                }
+            </ReactPlaceholder>
         </div>
     )
 }
