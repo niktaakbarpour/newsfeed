@@ -7,8 +7,11 @@ import {useHistory} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
         root: {
+            width: '100%',
+            height: 500,
             marginTop: theme.spacing(2),
-            marginBottom: theme.spacing(3)
+            marginBottom: theme.spacing(3),
+            backgroundColor: theme.palette.placeHolder.main,
         },
         item: {
             cursor: "pointer"

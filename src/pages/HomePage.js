@@ -15,12 +15,12 @@ export default function HomePage() {
     return (
         <div>
             <FollowUs/>
+            <CustomizedCarousel items={carouselItems}/>
             <ReactPlaceholder
                 showLoadingAnimation={true}
                 ready={!isCategoryLoading}
                 customPlaceholder={<HomePagePlaceHolder/>}
             >
-                <CustomizedCarousel items={carouselItems}/>
                 {
                     categories.map(category => <Category key={category.id} category={category}/>)
                 }
