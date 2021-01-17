@@ -38,6 +38,9 @@ const useStyles = makeStyles((theme) => ({
             height: theme.spacing(22)
         },
         image: {
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "contain",
+            backgroundImage: `url(${imagePlaceHolder})`,
             width: theme.spacing(25),
             height: '100%'
         },
