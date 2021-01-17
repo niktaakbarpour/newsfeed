@@ -102,6 +102,9 @@ export default function NaveBar() {
     }
 
     const startSearch = () => {
+        if (!query) {
+            return
+        }
         //ROUTING
         history.push(`/search/${query}`)
         window.scrollTo({
