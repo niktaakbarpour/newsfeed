@@ -121,7 +121,7 @@ export default function Page() {
                         </div>
                     </Grid>
 
-                    <Grid direction='column' item xs={3}>
+                    <Grid item xs={3}>
                         <MostRead/>
                         <Weather/>
                         <Card className={classes.calendar}>

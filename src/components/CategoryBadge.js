@@ -25,7 +25,7 @@ export default function CategoryBadge({className, text, color, onClick}) {
             ev.stopPropagation()
             onClick()
         }} className={clsx(classes.oval, className)}>
-            <Typography variant="p6" className={classes.categoryName}>
+            <Typography variant="subtitle2" className={classes.categoryName}>
                 {text}
             </Typography>
         </div>

@@ -26,7 +26,7 @@ export default function HorizontalCardListPlaceHolder({count}) {
     return (
         <div className={classes.cardList}>
             {
-                items.map(() => <VerticalCardPlaceHolder/>)
+                items.map((index) => <VerticalCardPlaceHolder key={index}/>)
             }
         </div>
     )

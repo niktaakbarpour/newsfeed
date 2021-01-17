@@ -1,6 +1,5 @@
 import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
-import {useSelector} from "react-redux";
 import InstagramIcon from '@material-ui/icons/Instagram';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import FacebookIcon from '@material-ui/icons/Facebook';
@@ -104,7 +103,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Footer() {
     const classes = useStyles();
-    const categories = useSelector(state => state.categories.list)
 
     return (
         <footer className={classes.footer}>
@@ -116,27 +114,28 @@ export default function Footer() {
                     // inputProps={{ 'aria-label': 'Enter Your Email' }}
                     className={classes.newsLetterInput}
                 />
-                <a className={classes.newsLetterBtn} href=""><SendIcon/></a>
+                <a className={classes.newsLetterBtn} href="https://gmail.com" target='_blank'
+                   rel='noreferrer'><SendIcon/></a>
             </div>
 
             <ul className={classes.socialLinks}>
                 <li className={classes.socialLinkLi}>
-                    <a className={classes.socialLink} href={INSTAGRAM_URL} target='_blank'>
+                    <a className={classes.socialLink} href={INSTAGRAM_URL} target='_blank' rel='noreferrer'>
                         <InstagramIcon/>
                     </a>
                 </li>
                 <li className={classes.socialLinkLi}>
-                    <a className={classes.socialLink} href={TWITTER_URL} target='_blank'>
+                    <a className={classes.socialLink} href={TWITTER_URL} target='_blank' rel='noreferrer'>
                         <TwitterIcon/>
                     </a>
                 </li>
                 <li className={classes.socialLinkLi}>
-                    <a className={classes.socialLink} href={FACEBOOK_URL} target='_blank'>
+                    <a className={classes.socialLink} href={FACEBOOK_URL} target='_blank' rel='noreferrer'>
                         <FacebookIcon/>
                     </a>
                 </li>
                 <li className={classes.socialLinkLi}>
-                    <a className={classes.socialLink} href={YOUTUBE_URL} target='_blank'>
+                    <a className={classes.socialLink} href={YOUTUBE_URL} target='_blank' rel='noreferrer'>
                         <YouTubeIcon/>
                     </a>
                 </li>

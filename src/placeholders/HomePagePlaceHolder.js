@@ -23,7 +23,7 @@ export default function HomePagePlaceHolder() {
         <div>
             <RectShape style={classes.carousel} color={theme.palette.placeHolder.main}/>
             {
-                items.map(() => <CategoryPlaceHolder/>)
+                items.map((index) => <CategoryPlaceHolder key={index}/>)
             }
         </div>
     )
