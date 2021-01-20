@@ -12,6 +12,8 @@ import {IconButton} from "@material-ui/core";
 import NewsFilter from "../components/NewsFilter";
 import {toggleFilterIsOpen} from "../actions/filtersActions";
 import EmptyText from "../components/EmptyText";
+import SortIcon from '@material-ui/icons/Sort';
+import {sortNewsByDate} from "../util/Utils";
 
 const useStyles = makeStyles((theme) => ({
         hr: {
@@ -39,6 +41,7 @@ export default function CategoryPage() {
     const dispatch = useDispatch()
     const categories = useSelector(state => state.categories.list)
     const [news, setNews] = useState([])
+    const [ascending, setAscending] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
 
     const onItemClicked = (item) => {
@@ -80,13 +83,20 @@ export default function CategoryPage() {
         filteredNews = filteredNews.slice(0, limitCountFilter)
     }
 
+    filteredNews = sortNewsByDate(filteredNews, ascending)
+
     return (
         <div>
             <div className={classes.titleContainer}>
                 <h1>{selectedCategory.name.toUpperCase()}</h1>
-                <IconButton onClick={() => dispatch(toggleFilterIsOpen(true))}>
-                    <FilterListIcon color='primary'/>
-                </IconButton>
+                <div>
+                    <IconButton onClick={() => setAscending(!ascending)}>
+                        <SortIcon color={ascending ? 'disabled' : 'primary'}/>
+                    </IconButton>
+                    <IconButton onClick={() => dispatch(toggleFilterIsOpen(true))}>
+                        <FilterListIcon color='primary'/>
+                    </IconButton>
+                </div>
             </div>
             <NewsFilter/>
             <hr className={classes.hr}/>

@@ -12,6 +12,8 @@ import {IconButton} from "@material-ui/core";
 import NewsFilter from "../components/NewsFilter";
 import {useDispatch, useSelector} from "react-redux";
 import EmptyText from "../components/EmptyText";
+import SortIcon from '@material-ui/icons/Sort';
+import {sortNewsByDate} from "../util/Utils";
 
 const useStyles = makeStyles((theme) => ({
         titleContainer: {
@@ -39,6 +41,7 @@ export default function SearchPage() {
     const {query} = useParams()
     const [news, setNews] = useState([])
     const [isLoading, setIsLoading] = useState(true)
+    const [ascending, setAscending] = useState(false)
 
     useEffect(() => {
         //API
@@ -72,13 +75,20 @@ export default function SearchPage() {
         filteredNews = filteredNews.slice(0, limitCountFilter)
     }
 
+    filteredNews = sortNewsByDate(filteredNews, ascending)
+
     return (
         <div>
             <div className={classes.titleContainer}>
                 <h1>Search For "{query}"</h1>
-                <IconButton onClick={() => dispatch(toggleFilterIsOpen(true))}>
-                    <FilterListIcon color='primary'/>
-                </IconButton>
+                <div>
+                    <IconButton onClick={() => setAscending(!ascending)}>
+                        <SortIcon color={ascending ? 'disabled' : 'primary'}/>
+                    </IconButton>
+                    <IconButton onClick={() => dispatch(toggleFilterIsOpen(true))}>
+                        <FilterListIcon color='primary'/>
+                    </IconButton>
+                </div>
             </div>
             <NewsFilter/>
             <hr className={classes.hr}/>

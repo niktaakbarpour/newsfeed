@@ -8,8 +8,12 @@ export function formatDate(timeMillis) {
     })}`
 }
 
-export function sortNewsByDate(news) {
-    return news.sort((a, b) => b.dateMillies - a.dateMillies)
+export function sortNewsByDate(news, ascending = false) {
+    const sorted = news.sort((a, b) => b.dateMillies - a.dateMillies)
+    if (ascending) {
+        return sorted.reverse()
+    }
+    return sorted
 }
 
 export function getBrief(text, limit) {
