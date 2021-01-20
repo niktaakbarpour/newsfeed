@@ -44,7 +44,7 @@ export default function FeedCard({feed, onDelete, onCategoryClicked}) {
                                    onClick={() => onCategoryClicked(feed.category)}
                     />
                     <IconButton onClick={() => onDelete(feed)}>
-                        <DeleteIcon color={"primary"}/>
+                        <DeleteIcon color="primary"/>
                     </IconButton>
                 </div>
             </CardContent>

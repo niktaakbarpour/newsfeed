@@ -1,19 +1,18 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom'
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import VerticalCardList from "../components/VerticalCardList";
 import {makeStyles} from "@material-ui/core/styles";
 import axios from "axios";
 import {BASE_URL} from "../constants/Constants";
 import ReactPlaceholder from "react-placeholder";
 import VerticalCardListPlaceHolder from "../placeholders/VerticalCardListPlaceHolder";
+import FilterListIcon from '@material-ui/icons/FilterList';
+import {IconButton} from "@material-ui/core";
+import NewsFilter from "../components/NewsFilter";
+import {toggleFilterIsOpen} from "../actions/filtersActions";
 
 const useStyles = makeStyles((theme) => ({
-        categoryTitle: {
-            marginLeft: theme.spacing(2),
-            marginBottom: theme.spacing(-1)
-
-        },
         hr: {
             color: theme.palette.secondary.main,
             height: theme.spacing(1),
@@ -21,12 +20,22 @@ const useStyles = makeStyles((theme) => ({
             width: "100%",
             display: "inline-flex",
         },
+        titleContainer: {
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: 'center',
+            '& > *': {
+                marginLeft: theme.spacing(2),
+                marginBottom: theme.spacing(-1)
+            }
+        }
     })
 );
 
 export default function CategoryPage() {
     const classes = useStyles();
     const {category} = useParams()
+    const dispatch = useDispatch()
     const categories = useSelector(state => state.categories.list)
     const [news, setNews] = useState([])
     const [isLoading, setIsLoading] = useState(true)
@@ -53,14 +62,37 @@ export default function CategoryPage() {
         return item.name.toLowerCase() === category
     })
 
+    const startDateFilter = useSelector((state) => state.filters.startDate)
+    const endDateFilter = useSelector((state) => state.filters.endDate)
+    const limitCountFilter = useSelector((state) => state.filters.limitCount)
+
+    let filteredNews = news.filter(news => {
+        if (startDateFilter && news.dateMillies < startDateFilter) {
+            return false
+        }
+        if (endDateFilter && news.dateMillies > endDateFilter) {
+            return false
+        }
+        return true
+    })
+    if (limitCountFilter && limitCountFilter >= 0 && filteredNews.length > limitCountFilter) {
+        filteredNews = filteredNews.slice(0, limitCountFilter)
+    }
+
     return (
         <div>
-            <h1 className={classes.categoryTitle}>{selectedCategory.name.toUpperCase()}</h1>
+            <div className={classes.titleContainer}>
+                <h1>{selectedCategory.name.toUpperCase()}</h1>
+                <IconButton onClick={() => dispatch(toggleFilterIsOpen(true))}>
+                    <FilterListIcon color='primary'/>
+                </IconButton>
+            </div>
+            <NewsFilter/>
             <hr className={classes.hr}/>
             <ReactPlaceholder ready={!isLoading}
                               showLoadingAnimation
                               customPlaceholder={<VerticalCardListPlaceHolder count={10}/>}>
-                <VerticalCardList items={news} onClick={onItemClicked}/>
+                <VerticalCardList items={filteredNews} onClick={onItemClicked}/>
             </ReactPlaceholder>
         </div>
     )

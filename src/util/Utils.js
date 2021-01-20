@@ -18,3 +18,10 @@ export function getBrief(text, limit) {
     }
     return text
 }
+
+export function getDateWithoutTime(date) {
+    if (date) {
+        return new Date(date.getFullYear(), date.getMonth(), date.getDate())
+    }
+    return null
+}
