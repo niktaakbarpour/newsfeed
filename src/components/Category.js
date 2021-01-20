@@ -9,6 +9,7 @@ import axios from "axios";
 import {BASE_URL} from "../constants/Constants";
 import {useDispatch} from "react-redux";
 import {addCarouselItem, addMostReadItem} from "../actions/collectionsAction";
+import EmptyText from "./EmptyText";
 
 const useStyles = makeStyles((theme) => ({
         hr: {
@@ -97,7 +98,11 @@ export default function Category({category}) {
             </div>
             <hr className={classes.hr}/>
             <ReactPlaceholder ready={!loading} customPlaceholder={<HorizontalCardListPlaceHolder count={3}/>}>
-                <HorizontalCardList items={news} onClick={onItemClicked}/>
+                {
+                    news.length === 0 ?
+                        <EmptyText text='Empty'/> :
+                        <HorizontalCardList items={news} onClick={onItemClicked}/>
+                }
             </ReactPlaceholder>
         </div>
     );

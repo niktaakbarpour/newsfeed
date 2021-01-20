@@ -6,6 +6,7 @@ import HomePagePlaceHolder from "../placeholders/HomePagePlaceHolder";
 import FollowUs from "../components/FollowUs";
 import CustomizedCarousel from "../components/CustomizedCarousel";
 import {sortNewsByDate} from "../util/Utils";
+import EmptyText from "../components/EmptyText";
 
 export default function HomePage() {
     const categories = useSelector(state => state.categories.list)
@@ -15,14 +16,19 @@ export default function HomePage() {
     return (
         <div>
             <FollowUs/>
-            <CustomizedCarousel items={carouselItems}/>
+            {
+                isCategoryLoading || categories.length !== 0 ? <CustomizedCarousel items={carouselItems}/> : null
+            }
+
             <ReactPlaceholder
                 showLoadingAnimation={true}
                 ready={!isCategoryLoading}
                 customPlaceholder={<HomePagePlaceHolder/>}
             >
                 {
-                    categories.map(category => <Category key={category.id} category={category}/>)
+                    categories.length === 0 ?
+                        <EmptyText text='There Is Nothing To Show, Add More Feeds.'/> :
+                        categories.map(category => <Category key={category.id} category={category}/>)
                 }
             </ReactPlaceholder>
         </div>

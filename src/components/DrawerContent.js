@@ -41,6 +41,10 @@ const useStyles = makeStyles((theme) => ({
         colorPicker: {
             marginBottom: theme.spacing(2),
             margin: "auto"
+        },
+        empty: {
+            textAlign: 'center',
+            color: theme.palette.text.secondary,
         }
     })
 )
@@ -168,7 +172,7 @@ export default function DrawerContent() {
                               customPlaceholder={<FeedListPlaceHolder count={5}/>}>
                 {
                     feeds.length === 0 ?
-                        <h1>Please Add Feeds</h1> :
+                        <h2 className={classes.empty}>Please Add Feeds</h2> :
                         <FeedList feeds={feeds} onCategoryClick={onCategoryClick} deleteFeed={deleteFeed}/>
                 }
             </ReactPlaceholder>

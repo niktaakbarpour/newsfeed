@@ -68,9 +68,9 @@ const useStyles = makeStyles((theme) => ({
 )
 
 export default function Page() {
+    const classes = useStyles();
     const isDrawerOpen = useSelector(state => state.drawer.isOpen)
     const dispatch = useDispatch()
-    const classes = useStyles();
     const theme = useTheme();
     const [value, onChange] = useState(new Date());
 

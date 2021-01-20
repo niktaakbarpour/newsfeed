@@ -11,6 +11,7 @@ import FilterListIcon from '@material-ui/icons/FilterList';
 import {IconButton} from "@material-ui/core";
 import NewsFilter from "../components/NewsFilter";
 import {toggleFilterIsOpen} from "../actions/filtersActions";
+import EmptyText from "../components/EmptyText";
 
 const useStyles = makeStyles((theme) => ({
         hr: {
@@ -92,7 +93,11 @@ export default function CategoryPage() {
             <ReactPlaceholder ready={!isLoading}
                               showLoadingAnimation
                               customPlaceholder={<VerticalCardListPlaceHolder count={10}/>}>
-                <VerticalCardList items={filteredNews} onClick={onItemClicked}/>
+                {
+                    filteredNews.length === 0 ?
+                        <EmptyText text='There Is Nothing To Show'/> :
+                        <VerticalCardList items={filteredNews} onClick={onItemClicked}/>
+                }
             </ReactPlaceholder>
         </div>
     )

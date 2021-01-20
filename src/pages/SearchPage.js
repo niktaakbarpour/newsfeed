@@ -11,6 +11,7 @@ import FilterListIcon from "@material-ui/icons/FilterList";
 import {IconButton} from "@material-ui/core";
 import NewsFilter from "../components/NewsFilter";
 import {useDispatch, useSelector} from "react-redux";
+import EmptyText from "../components/EmptyText";
 
 const useStyles = makeStyles((theme) => ({
         titleContainer: {
@@ -86,7 +87,7 @@ export default function SearchPage() {
                               customPlaceholder={<VerticalCardListPlaceHolder count={10}/>}>
                 {
                     filteredNews.length === 0 ?
-                        <h1>Nothing Found</h1> :
+                        <EmptyText text='Nothing Found'/> :
                         <VerticalCardList items={filteredNews} onClick={onItemClicked}/>
                 }
             </ReactPlaceholder>

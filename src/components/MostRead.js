@@ -35,7 +35,7 @@ export default function MostRead() {
             <hr className={classes.hr}/>
             <ReactPlaceholder showLoadingAnimation={true}
                               ready={mostReadNews.length !== 0}
-                              customPlaceholder={<MostReadPlaceHolder count={8}/>}>
+                              customPlaceholder={<MostReadPlaceHolder count={5}/>}>
                 <MostReadVerticalCardList items={mostReadNews} onClick={onItemClick}/>
             </ReactPlaceholder>
         </div>)
