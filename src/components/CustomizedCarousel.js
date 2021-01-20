@@ -37,6 +37,13 @@ const useStyles = makeStyles((theme) => ({
             top: 0,
             right: 0,
             margin: theme.spacing(2)
+        },
+        text: {
+            textOverflow: "ellipsis",
+            overflow: "hidden",
+            WebkitLineClamp: "3",
+            display: "-webkit-box",
+            WebkitBoxOrient: 'vertical',
         }
     })
 );
@@ -75,7 +82,7 @@ export default function CustomizedCarousel({items}) {
                                            onClick={onCategoryClick.bind(null, news.category)}/>
                             <div className={classes.textContainer}>
                                 <h1>{news.title}</h1>
-                                <p>{news.description}</p>
+                                <p className={classes.text}>{news.description}</p>
                             </div>
                         </div>
                     ))
